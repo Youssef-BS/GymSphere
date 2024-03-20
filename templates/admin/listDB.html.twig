@@ -1,0 +1,23 @@
+ <table>
+        <tr>
+            <td><h4>Author</h4></td>
+            <td><h4>email</h4></td>
+        </tr>
+    {% for a in users %}
+    <tr>
+        <td>
+        {{ a.username }} 
+        </td>
+        <td>
+        {{ a.email }} 
+        </td>
+        <td><a href="{{ path('app_getOne', {id: a.id}) }}">details</a>
+        </td> 
+        </td>
+        <td><a class="modifier" href="{{ path('author_update', {id: a.id}) }}" >modifier</a>
+        </td> 
+        <td><a href="{{ path('author_remove', {id: a.id}) }}" class="supprimer">supprimer</a>
+        </td> 
+    </tr>
+    {% endfor %}
+    </table>
