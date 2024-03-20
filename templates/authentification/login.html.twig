@@ -25,31 +25,28 @@
         .form-control {
             border-radius: 20px;
         }
-       
         .btn-login {
             border-radius: 20px;
         }
         .form-label {
-            text-align : left !important;
+            text-align: left !important;
         }
         button {
-            width:100px;
-            margin-left : 130px;
+            width: 100%;
+            margin-top: 10px;
         }
-
         .forgetPassword , .register {
             text-align: center;
             margin-top: 10px;
-            color : blue ;
+            color: blue;
         }
-     
     </style>
 </head>
 <body>
 
 <div class="login-container">
     <h2>Login</h2>
-    <form action="{{ path('login') }}" method="POST">
+    <form action="{{ path('authenticate') }}" method="POST">
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -58,10 +55,10 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-login btn-block">Login</button>
+        <button type="submit" class="btn btn-primary btn-login">Login</button>
     </form>
     <p class="forgetPassword">Click Here If You Forget Password !</p>
-    <p class="register"><a href="{{ path('register') }}">Register Here If You don't Have Account !</a></p>
+    <p class="register"><a href="{{ path('registerAccount') }}">Register Here If You don't Have Account !</a></p>
 </div>
 
 </body>

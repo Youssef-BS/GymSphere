@@ -10,7 +10,7 @@ class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: 'idUser', type: 'integer')]
     private ?int $idUser = null;
 
     #[ORM\Column(length: 255)]
@@ -19,7 +19,7 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $age = null;
 
     #[ORM\Column(length: 255)]
@@ -28,24 +28,31 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: 'phoneNumber', length: 255)]
     private ?string $phoneNumber = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer', name: 'isAdmin')]
     private ?int $isAdmin = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer', name: 'isCoach')]
     private ?int $isCoach = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: 'photoProfile', length: 255)]
     private ?string $photoProfile = null;
 
     #[ORM\Column(length: 255)]
     private ?string $otp = null;
 
-    public function getidUser(): ?int
+    public function getIdUser(): ?int
     {
         return $this->idUser;
+    }
+  
+    public function setIdUser(int $idUser): static
+    {
+        $this->idUser = $idUser;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -120,7 +127,7 @@ class User
         return $this;
     }
 
-    public function isIsAdmin(): ?int
+    public function getIsAdmin(): ?int
     {
         return $this->isAdmin;
     }
@@ -132,7 +139,7 @@ class User
         return $this;
     }
 
-    public function isIsCoach(): ?int
+    public function getIsCoach(): ?int
     {
         return $this->isCoach;
     }

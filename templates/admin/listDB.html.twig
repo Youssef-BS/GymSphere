@@ -6,17 +6,17 @@
     {% for a in users %}
     <tr>
         <td>
-        {{ a.username }} 
+        {{ a.idUser }} 
         </td>
         <td>
         {{ a.email }} 
         </td>
-        <td><a href="{{ path('app_getOne', {id: a.id}) }}">details</a>
+        {# <td><a href="{{ path('app_getOne', {id: a.idUser}) }}">details</a> #}
         </td> 
         </td>
-        <td><a class="modifier" href="{{ path('author_update', {id: a.id}) }}" >modifier</a>
+        {# <td><a class="modifier" href="{{ path('author_update', {id: a.idUser}) }}" >modifier</a> #}
         </td> 
-        <td><a href="{{ path('author_remove', {id: a.id}) }}" class="supprimer">supprimer</a>
+        {# <td><a href="{{ path('author_remove', {id: a.idUser}) }}" class="supprimer">supprimer</a> #}
         </td> 
     </tr>
     {% endfor %}
