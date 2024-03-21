@@ -8,7 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request ;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Cookie ;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Firebase\JWT\JWT;
 class AuthentificationController extends AbstractController
 {
 
@@ -42,83 +43,74 @@ class AuthentificationController extends AbstractController
         return $this->render('authentification/register.html.twig');
     }
 
-
-    #[Route('/login', name:'login')]
+    #[Route('/login', name: 'login')]
     public function index(Request $request): Response
     {
-       
         if ($this->isUserAuthenticated($request)) {
-            return $this->redirectToRoute('app_user'); 
+            return $this->redirectToRoute('dashboard');
         }
         
         return $this->render('authentification/login.html.twig');
     }
-    
+
     #[Route('/authenticate', name: 'authenticate', methods: ['POST'])]
     public function authenticate(Request $request): Response
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
 
+        if($email || $password === '') 
+            return $this->redirectToRoute('login', ['warning' => 'Email and password are required']);
+        
+else
         if ($this->isValidCredentials($email, $password)) {
-            $token = md5(uniqid(rand(), true));
-            $response = new Response();
-            $response->headers->setCookie(new Cookie('auth_token', $token));
-            $response->send();
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
+            $payload = [
+                'idUser' => $user->getIdUser(),
+                'isAdmin' => $user->getIsAdmin(),
+                'isCoach' => $user->getIsCoach(),
+                'email' => $user->getEmail(),
+                'exp' => time() + (5 * 24 * 60 * 60), 
+            ];
+            $token = JWT::encode($payload, 'YSF', 'HS256');
             $this->storeTokenInSession($request, $token);
             return $this->redirectToRoute('dashboard');
         } else {
-            return $this->redirectToRoute('login', ['error' => 'Invalid credentials']);
+            return $this->redirectToRoute('login', ['error' => 'Password or Email is incorrect !']);
         }
     }
-    
+
     #[Route('/dashboard', name: 'dashboard')]
     public function dashboard(Request $request): Response
     {
-       
         if (!$this->isUserAuthenticated($request)) {
-            return $this->redirectToRoute('login'); 
+            return $this->redirectToRoute('login');
         }
         
         return $this->render('admin/index.html.twig');
     }
-    
 
     #[Route('/logout', name: 'logout')]
+
     public function logout(Request $request): Response
     {
-        $session = $request->getSession();
-        $session->clear();
-        $response = new Response();
-        $response->headers->clearCookie('auth_token');
-        $response->send();   
+        $request->getSession()->remove('auth_token');
         return $this->redirectToRoute('login');
     }
 
-
     private function isUserAuthenticated(Request $request): bool
     {
-        $session = $request->getSession();
-        $token = $session->get('auth_token');
-        $cookieToken = $request->cookies->get('auth_token');
-        
-        return $token && $token === $cookieToken;
+        return $request->getSession()->has('auth_token');
     }
-
-
     private function storeTokenInSession(Request $request, string $token): void
     {
-        $session = $request->getSession();
-        $session->set('auth_token', $token);
+        $request->getSession()->set('auth_token', $token);
     }
 
-    private function isValidCredentials(Request $request): bool
+    private function isValidCredentials(string $email, string $password): bool
     {
-        $email = $request->request->get('email');
-        $password = $request->request->get('password');
         $userRepository = $this->getDoctrine()->getRepository(User::class);
         $validUser = $userRepository->findOneBy(['email' => $email, 'password' => $password]);
         return $validUser !== null;
     }
-
 }

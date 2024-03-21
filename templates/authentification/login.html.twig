@@ -59,6 +59,14 @@
     </form>
     <p class="forgetPassword">Click Here If You Forget Password !</p>
     <p class="register"><a href="{{ path('registerAccount') }}">Register Here If You don't Have Account !</a></p>
+{% if app.request.query.has('error') %}
+    {% set errorMessage = app.request.query.get('error') %}
+    <div class="alert alert-danger">{{ errorMessage }}</div>
+{% endif %}
+{% if app.request.query.has('warning') %}
+    {% set warningMessage = app.request.query.get('warning') %}
+    <div class="alert alert-warning">{{ warningMessage }}</div>
+{% endif %}
 </div>
 
 </body>
