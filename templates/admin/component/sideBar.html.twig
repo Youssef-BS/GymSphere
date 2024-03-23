@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+.sidebar {
+  flex: 1;
+  height: 100vh;
+  background-color: rgb(251, 251, 255);
+  position: fixed;
+  top: 0;
+  left : 0;
+  width : 250px;
+}
+
+.sidebarWrapper {
+  padding: 20px;
+  color: #555;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarListItem {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: rgb(240, 240, 255);
+}
+
+.sidebarIcon {
+  margin-right: 5px;
+  font-size: 20px !important;
+}
+</style>
+ <body>
+ <div class="sidebar">
+      <div class="sidebarWrapper">
+        <div class="sidebarMenu">
+          <h3 class="sidebarTitle">Dashboard</h3>
+          <ul class="sidebarList">
+            {# <Link to="/" class="link"> #}
+            <li class="sidebarListItem active">
+              <LineStyle class="sidebarIcon" />
+              Home
+            </li>
+            {# </Link> #}
+            <li class="sidebarListItem">
+              <Timeline class="sidebarIcon" />
+              Analytics
+            </li>
+            <li class="sidebarListItem">
+              <TrendingUp class="sidebarIcon" />
+              Sales
+            </li>
+          </ul>
+        </div>
+        <div class="sidebarMenu">
+          <h3 class="sidebarTitle">Quick Menu</h3>
+          <ul class="sidebarList">
+            {# <Link to="/users" class="link"> #}
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                Users
+              </li>
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                Coachs
+              </li>
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                Programs
+              </li>
+            {# </Link> #}
+            {# <Link to="/products" class="link"> #}
+              <li class="sidebarListItem">
+                <Storefront class="sidebarIcon" />
+                Products
+              </li>
+              <li class="sidebarListItem">
+                <Storefront class="sidebarIcon" />
+                Gyms
+              </li>
+            {# </Link> #}
+            <li class="sidebarListItem">
+              <AttachMoney class="sidebarIcon" />
+              Transactions
+            </li>
+            <li class="sidebarListItem">
+              <BarChart class="sidebarIcon" />
+              Reclamations
+            </li>
+          </ul>
+        </div>
+        <div class="sidebarMenu">
+          <h3 class="sidebarTitle">Notifications</h3>
+          <ul class="sidebarList">
+            <li class="sidebarListItem">
+              <ChatBubbleOutline class="sidebarIcon" />
+              Messages
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>

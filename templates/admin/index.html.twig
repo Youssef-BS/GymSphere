@@ -1,2 +1,17 @@
-<h1>Hello admin</h1>
-<a href="{{ path('logout') }}" >Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<style>
+.container {
+    display : flex;
+    margin : 0;
+}
+</style>
+<body>
+<div class="container">
+{% include 'admin/component/sideBar.html.twig' %}
+{% include 'admin/component/main.html.twig' %}
+</div>
+</body>
+</html>

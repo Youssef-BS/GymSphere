@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart {
+            margin: 20px;
+            padding: 20px;
+            -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+        }
+
+        .chartTitle {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="chart">
+    <h3 class="chartTitle">youssef test</h3>
+    <canvas id="myChart" width="400" height="100"></canvas>
+</div>
+
+<script>
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First Dataset',
+            data: [65, 59, 80, 81, 56, 55, 40,45,80,65,63,60],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+    const config = {
+        type: 'line',
+        data: data,
+    };
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, config);
+</script>
+</body>
+</html>

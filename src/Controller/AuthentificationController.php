@@ -59,10 +59,10 @@ class AuthentificationController extends AbstractController
         $email = $request->request->get('email');
         $password = $request->request->get('password');
 
-        if($email || $password === '') 
-            return $this->redirectToRoute('login', ['warning' => 'Email and password are required']);
+        // if($email || $password === '') 
+        //     return $this->redirectToRoute('login', ['warning' => 'Email and password are required']);
         
-else
+
         if ($this->isValidCredentials($email, $password)) {
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
             $payload = [
