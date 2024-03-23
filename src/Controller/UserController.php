@@ -25,5 +25,9 @@ class UserController extends AbstractController
           'users'=>$list
         ]);
     }
+    #[Route('/analystic', name: 'analystic')]
+    public function getAnalystic() : Response{
+    return $this->render('admin/component/analystics.html.twig');
+    }
 
 }

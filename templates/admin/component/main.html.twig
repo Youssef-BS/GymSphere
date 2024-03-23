@@ -9,7 +9,6 @@
 .home{
     flex: 4;
 }
-
 .homeWidgets{
     display: flex;
     margin: 20px;
@@ -19,7 +18,7 @@
 
  <div class="home">
         {% include 'admin/component/feature.html.twig' %}
-      <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
+      {# <Chart data={userData} title="User Analytics" grid dataKey="Active User"/> #}
       {% include 'admin/component/chart.html.twig' %}
       <div class="homeWidgets">
        {% include 'admin/component/witsm.html.twig' %}
