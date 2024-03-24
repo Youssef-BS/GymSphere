@@ -11,6 +11,7 @@
   top: 0;
   left : 0;
   width : 250px;
+  margin-right : 250px;
 }
 
 .sidebarWrapper {
@@ -40,6 +41,10 @@
   margin-right: 5px;
   font-size: 20px !important;
 }
+li , a{
+  text-decoration: none;
+  color : black;
+}
 </style>
  <body>
  <div class="sidebar">
@@ -50,12 +55,12 @@
             {# <Link to="/" class="link"> #}
             <li class="sidebarListItem active">
               <LineStyle class="sidebarIcon" />
-              Home
+             <a href="{{ path('dashboard') }}">Home</a>
             </li>
             {# </Link> #}
             <li class="sidebarListItem">
               <Timeline class="sidebarIcon" />
-              <a href="{{ path('analystic') }}">Analytics</a>Analytics
+              <a href="{{ path('analystic') }}">Analytics</a>
             </li>
             <li class="sidebarListItem">
               <TrendingUp class="sidebarIcon" />
@@ -69,7 +74,7 @@
             {# <Link to="/users" class="link"> #}
               <li class="sidebarListItem">
                 <PermIdentity class="sidebarIcon" />
-                Users
+                   <a href="{{ path('users') }}">Users</a>
               </li>
               <li class="sidebarListItem">
                 <PermIdentity class="sidebarIcon" />
@@ -77,17 +82,17 @@
               </li>
               <li class="sidebarListItem">
                 <PermIdentity class="sidebarIcon" />
-                Programs
+                  <a href="{{ path('programs') }}">Programs</a> 
               </li>
             {# </Link> #}
             {# <Link to="/products" class="link"> #}
               <li class="sidebarListItem">
                 <Storefront class="sidebarIcon" />
-                Products
+                <a href="{{ path('produts') }}">Products</a> 
               </li>
               <li class="sidebarListItem">
                 <Storefront class="sidebarIcon" />
-                Gyms
+                <a href="{{ path('gyms') }}">Gyms</a> 
               </li>
             {# </Link> #}
             <li class="sidebarListItem">
@@ -96,7 +101,7 @@
             </li>
             <li class="sidebarListItem">
               <BarChart class="sidebarIcon" />
-              Reclamations
+             <a href="{{ path('reclamation') }}">Reclamations</a>  
             </li>
           </ul>
         </div>

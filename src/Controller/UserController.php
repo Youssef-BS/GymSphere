@@ -29,5 +29,25 @@ class UserController extends AbstractController
     public function getAnalystic() : Response{
     return $this->render('admin/component/analystics.html.twig');
     }
+    #[Route('/users', name: 'users')]
+    public function users() : Response{
+    return $this->render('admin/component/users.html.twig');
+    }
+    #[Route('/programs', name: 'programs')]
+    public function programs() : Response{
+    return $this->render('admin/component/programs.html.twig');
+    }
+    #[Route('/gyms', name: 'gyms')]
+    public function gyms() : Response{
+    return $this->render('admin/component/gyms.html.twig');
+    }
+    #[Route('/products', name: 'produts')]
+    public function products() : Response{
+    return $this->render('admin/component/products.html.twig');
+    }
+    #[Route('/reclamation', name: 'reclamation')]
+    public function reclamation() : Response{
+    return $this->render('admin/component/reclamation.html.twig');
+    }
 
 }
