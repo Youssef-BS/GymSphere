@@ -49,5 +49,9 @@ class UserController extends AbstractController
     public function reclamation() : Response{
     return $this->render('admin/component/reclamation.html.twig');
     }
+    #[Route('/userDetail', name: 'userDetail')]
+    public function userDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
 
 }

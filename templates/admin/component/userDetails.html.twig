@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style>
+
+
+        .user-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            min-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+          
+        }
+
+        .user-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .user-info h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+    .user-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .consulter button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .consulter button:hover {
+            background-color: #0056b3;
+        }
+        .userDetails{
+            display : flex ; 
+              margin :70px 300px ;
+        }
+        
+       .editInput {
+    margin-top: 20px;
+}
+
+.fileInputLabel {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.fileInput {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.editField {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.editField:focus {
+    outline: none;
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px dodgerblue;
+}
+
+.editField::placeholder {
+    color: #999;
+}
+
+select.editField {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L12 15L17 10H7Z' fill='%23333333'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+</style>
+<body>
+{% include 'admin/component/sideBar.html.twig' %}
+<div class="userDetails">
+  <div class="user-container">
+    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+    <div class="user-info">
+    <p>idUser</p>
+        <p>youssef</p>
+        <p>prenom</p>
+        <p>age</p>
+        <p>email</p>
+        <p>password</p>
+        <p>phoneNumber</p>
+        <p>pdp</p>
+        <p>admin</p>     
+    </div>
+    <div class="consulter">
+    <button>edit</button>
+     </div>
+    </div>
+<div class="editInput">
+    <label for="fileInput" class="fileInputLabel">Upload Image:</label>
+    <input type="file" id="fileInput" name="file" class="fileInput" />
+
+    <input type="number" name="idUser" class="editField" placeholder="User ID" />
+    <input type="text" name="prenom" class="editField" placeholder="First Name" />
+    <input type="number" name="age" class="editField" placeholder="Age" />
+    <input type="email" name="email" class="editField" placeholder="Email" />
+    <input type="password" name="password" class="editField" placeholder="Password" />
+    <input type="tel" name="phoneNumber" class="editField" placeholder="Phone Number" />
+
+    <select name="role" class="editField">
+        <option value="none">Select Role</option>
+        <option value="admin">Admin</option>
+        <option value="coach">Coach</option>
+    </select>
+</div>
+
+    </div>
+</body>
