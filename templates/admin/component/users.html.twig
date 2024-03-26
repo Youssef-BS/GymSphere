@@ -65,6 +65,10 @@
         .consulter button:hover {
             background-color: #0056b3;
         }
+       button , a {
+            color : white ;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -77,7 +81,7 @@
         <p>admin</p>
     </div>
     <div class="consulter">
-    <button>consulter</button>
+    <button><a href="{{ path('userDetail') }}">consulter</a></button>
     <button>edit</button>
     <button>delete</button>
     </div>

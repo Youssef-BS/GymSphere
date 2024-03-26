@@ -53,5 +53,21 @@ class UserController extends AbstractController
     public function userDetails() : Response{
     return $this->render('admin/component/userDetails.html.twig');
     }
+    #[Route('/productDetails', name: 'productDetail')]
+    public function productDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
+    #[Route('/gymDetails', name: 'gymDetails')]
+    public function gymDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
+    #[Route('/reclamationDetails', name: 'reclamationDetails')]
+    public function reclamationDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
+    #[Route('/programsDetails', name: 'programsDetails')]
+    public function programsDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
 
 }
