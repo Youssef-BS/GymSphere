@@ -113,4 +113,5 @@ class AuthentificationController extends AbstractController
         $validUser = $userRepository->findOneBy(['email' => $email, 'password' => $password]);
         return $validUser !== null;
     }
+    
 }
