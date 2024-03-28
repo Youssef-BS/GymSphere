@@ -58,18 +58,12 @@ class AuthentificationController extends AbstractController
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
-
-        // if($email || $password === '') 
-        //     return $this->redirectToRoute('login', ['warning' => 'Email and password are required']);
-        
-
         if ($this->isValidCredentials($email, $password)) {
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
             $payload = [
                 'idUser' => $user->getIdUser(),
                 'isAdmin' => $user->getIsAdmin(),
                 'isCoach' => $user->getIsCoach(),
-                'email' => $user->getEmail(),
                 'exp' => time() + (5 * 24 * 60 * 60), 
             ];
             $token = JWT::encode($payload, 'YSF', 'HS256');
@@ -89,6 +83,17 @@ class AuthentificationController extends AbstractController
         
         return $this->render('admin/index.html.twig');
     }
+    
+    #[Route('/client', name: 'client')]
+    public function client(Request $request): Response
+    {
+        // if (!$this->isUserAuthenticated($request)) {
+        //     return $this->redirectToRoute('login');
+        // }
+        
+        return $this->render('client/index.html.twig');
+    }
+
 
     #[Route('/logout', name: 'logout')]
 
@@ -102,6 +107,22 @@ class AuthentificationController extends AbstractController
     {
         return $request->getSession()->has('auth_token');
     }
+
+    
+    private function isAdminAuthenticated(Request $request): bool 
+    {
+        if ($request->getSession()->has('auth_token')) {
+            $token = $request->getSession()->get('auth_token');
+            try {
+                $decodedToken = JWT::decode($token, 'YSF', ['HS256']);
+                return isset($decodedToken->isAdmin) && $decodedToken->isAdmin === true;
+            } catch (\Exception $e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
     private function storeTokenInSession(Request $request, string $token): void
     {
         $request->getSession()->set('auth_token', $token);

@@ -13,6 +13,7 @@
   left : 0;
   width : 230px;
   align-items : center;
+  overflow: scroll !important;
 }
 
 .sidebarWrapper {
@@ -150,18 +151,15 @@ chat_bubble
               Messages
             </li>
           </ul>
-        </div>
-      
-        
+        </div> 
           <ul class="sidebarList">
-           
+          <a href="{{path('logout')}}">
             <li class="sidebarListItem">
-            <span class="material-symbols-outlined">
-logout
-</span>
+            <span class="material-symbols-outlined">logout</span>
               <ChatBubbleOutline class="sidebarIcon" />
               Logout
             </li>
+             </a>
           </ul>
         </div>
       
