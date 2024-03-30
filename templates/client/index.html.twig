@@ -44,12 +44,67 @@
             font-size: 16px;
             font-weight: bold;
         }
+
+        .gyms {
+            margin: 40px auto;
+            width: 90%;
+            height: 150vh;
+            box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .mini-container {
+            width: 40%;
+            display: flex;
+            margin: 30px;
+            position: relative;
+            height : 48%;
+            cursor : pointer ;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px; 
+}
+
+.mini-description {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, white, black);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease; 
+    align-items : center;
+    justify-content : center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.mini-container:hover .mini-description {
+    opacity: 0.7;
+    top:0;
+    height : 100%;
+}
+
+.description-container {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    opacity : 1 ;
+    display : block;
+}
+
+
     </style>
 </head>
 <body>
     {% include 'client/components/navbar.html.twig' %}
-    
-    <!-- Carousel -->
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -64,7 +119,6 @@
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
-            <!-- Add more carousel items here -->
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -75,8 +129,6 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-    <!-- About section -->
     <div class="container">
         <div class="about">
             <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="about">
@@ -85,7 +137,16 @@
             </div>
         </div>
     </div>
-
+    <div class="gyms">
+    <div class="mini-container">
+    <img src="https://static.wixstatic.com/media/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    </div>
+    </div>
+    </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
