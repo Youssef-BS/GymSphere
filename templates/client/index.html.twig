@@ -45,23 +45,24 @@
             font-weight: bold;
         }
 
-        .gyms {
+        .gyms , .coachs , .product ,.programs{
             margin: 40px auto;
             width: 90%;
-            height: 150vh;
+            min-height: 50vh;
             box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-wrap: wrap;
         }
 
         .mini-container {
-            width: 40%;
+            width:24%;
             display: flex;
-            margin: 30px;
+            margin: 30px auto;
             position: relative;
-            height : 48%;
-            cursor : pointer ;
+            height : 500px;
             transition: transform 0.3s ease;
+            align-items: center;
+            justify-content: center;
         }
 
         .mini-container img {
@@ -87,17 +88,64 @@
 }
 
 .mini-container:hover .mini-description {
-    opacity: 0.7;
+    opacity: 0.8;
     top:0;
     height : 100%;
 }
 
 .description-container {
     position: absolute;
-    top: 20%;
+    top: 80%;
     text-align: center;
     opacity : 1 ;
     display : block;
+    width : 100%;
+    transition : 0.5s;
+}
+
+.mini-container:hover .description-container {
+    opacity: 1;
+    top : 40%;
+    color : white;
+}
+
+.button {
+    border: 2px solid white ;
+    width :70%;
+    margin : auto;
+    font-size : 18px;
+    cursor : pointer;
+    transition : 0.2s;
+    padding : 0.5em;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.buttonMore{
+      border: 2px solid black ;
+    width :30%;
+    margin : auto;
+    font-size : 18px;
+    cursor : pointer;
+    transition : 0.2s;
+    padding : 0.5em;
+    margin : 40px auto;
+    text-align : center;
+}
+
+.buttonMore:hover {
+    background-color: black;
+    color: white;
 }
 
 
@@ -137,15 +185,138 @@
             </div>
         </div>
     </div>
+     <h1>Our Gyms<h1>
     <div class="gyms">
+ 
     <div class="mini-container">
     <img src="https://static.wixstatic.com/media/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg" alt=""/>
     <div class="mini-description">
     <div class="description-container">
     <h3>California Gym<h3>
+    <p>8:30-12:30 / 2:00 - 10:00</p>
+    <p class="button">See Detail</p>
     </div>
     </div>
     </div>
+    <div class="mini-container">
+    <img src="https://static.wixstatic.com/media/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>8:30-12:30 / 2:00 - 10:00</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://static.wixstatic.com/media/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>8:30-12:30 / 2:00 - 10:00</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://static.wixstatic.com/media/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7382fe_df4df7cfe8a9470db12cf069efc5946f~mv2.jpg" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>8:30-12:30 / 2:00 - 10:00</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <p class="buttonMore">See More</p>
+    </div>
+    <h1>MEET THE PROS</h1>
+     <div class="coachs">
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17706038/pexels-photo-17706038/free-photo-of-man-at-gym.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Ahmed</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17770536/pexels-photo-17770536/free-photo-of-portrait-of-a-man-exercising-at-the-gym.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Ahmed</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17706046/pexels-photo-17706046/free-photo-of-shirtless-muscular-man.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Ahmed</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17881668/pexels-photo-17881668/free-photo-of-woman-in-sportswear-standing-on-a-tennis-court.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Ahmed</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <p class="buttonMore">See More</p>
+    </div>
+    <h1>PODUCT FOR SALE</h1>
+     <div class="programs">
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/260352/pexels-photo-260352.jpeg?auto=compress&cs=tinysrgb&w=600  " alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>alter</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/16216610/pexels-photo-16216610/free-photo-of-red-box-of-creatine-on-dumbbell.jpeg?auto=compress&cs=tinysrgb&w=600  " alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Creatine</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/260352/pexels-photo-260352.jpeg?auto=compress&cs=tinysrgb&w=600  " alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>test</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/260352/pexels-photo-260352.jpeg?auto=compress&cs=tinysrgb&w=600  " alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>test</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <p class="buttonMore">See More</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
