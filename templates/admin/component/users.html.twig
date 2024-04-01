@@ -9,12 +9,15 @@
             background-color: #f5f5f5;
         }
 
+        .container-wrapper {
+            margin-left: 250px; /* Adjust as needed */
+        }
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
-            margin-left : 250px;
         }
 
         .user-container {
@@ -26,6 +29,7 @@
             width: 280px;
             text-align: center;
             transition: transform 0.3s ease;
+            
         }
 
         .user-container:hover {
@@ -51,7 +55,7 @@
             color: #666;
         }
 
-        .consulter button {
+        .consulter a {
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -60,95 +64,49 @@
             margin: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            text-decoration: none; /* Ensure link text decoration is removed */
+            display: inline-block; /* Ensure link behaves like a block element */
         }
 
-        .consulter button:hover {
+        .consulter a:hover {
             background-color: #0056b3;
         }
-       button , a {
-            color : white ;
-            text-decoration: none;
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
-<div class="container"> <!-- Corrected class name to "container" -->
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
+<div class="container-wrapper">
+    <div class="container"> 
+        {% for user in users %}
+        <div class="user-container">
+            <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+            <div class="user-info">
+                <h1>{{ user.nom }}</h1>
+                <p>{{ user.isAdmin ? 'Admin' : 'User' }}</p>
+            </div>
+            <div class="consulter">
+                <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
+                <button>edit</button>
+                <button>delete</button>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
-    </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
-    </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
-    </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
-    </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    <div class="user-container">
-    <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-        <h1>youssef</h1>
-        <p>admin</p>
-    </div>
-    <div class="consulter">
-    <button><a href="{{ path('userDetail') }}">consulter</a></button>
-    <button>edit</button>
-    <button>delete</button>
-    </div>
-    </div>
-    
-
-   
 </div>
 </body>
 </html>

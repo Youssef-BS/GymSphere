@@ -10,28 +10,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
   
-    #[Route('/user', name: 'app_user')]
-    public function index(): Response
-    {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
+    // #[Route('/user', name: 'app_user')]
+    // public function index(): Response
+    // {
+    //     return $this->render('admin/index.html.twig', [
+    //         'controller_name' => 'UserController',
+    //     ]);
+    // }
 
     #[Route('/getAll', name: 'app_listDB')]
     public function getAll(UserRepository $repo) : Response{
         $list = $repo->findAll();
-        return $this->render('author/listDB.html.twig',[
-          'users'=>$list
+        return $this->render('admin/component/users.html.twig', [
+            'users' => $list
         ]);
     }
+
     #[Route('/analystic', name: 'analystic')]
     public function getAnalystic() : Response{
     return $this->render('admin/component/analystics.html.twig');
     }
     #[Route('/users', name: 'users')]
-    public function users() : Response{
-    return $this->render('admin/component/users.html.twig');
+    public function users(UserRepository $repo) : Response{
+        $list = $repo->findAll();
+        return $this->render('admin/component/users.html.twig', [
+            'users' => $list
+        ]);
     }
     #[Route('/programs', name: 'programs')]
     public function programs() : Response{

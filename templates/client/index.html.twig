@@ -148,6 +148,87 @@ h1{
     color: white;
 }
 
+.bmi-calculator {
+    text-align: center;
+    margin: 50px auto;
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#calculate-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#calculate-btn:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer h3 {
+    color: white;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer ul.social-icons {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer ul.social-icons li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.footer ul.social-icons li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.footer ul.social-icons li a:hover {
+    color: #ffc107; 
+}
+
+
 
     </style>
 </head>
@@ -185,7 +266,7 @@ h1{
             </div>
         </div>
     </div>
-     <h1>Our Gyms<h1>
+     <h1>GYMS<h1>
     <div class="gyms">
  
     <div class="mini-container">
@@ -318,6 +399,86 @@ h1{
     </div>
     <p class="buttonMore">See More</p>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+     <h1>PROGRAMS</h1>
+     <div class="coachs">
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17802645/pexels-photo-17802645/free-photo-of-man-boxing-at-gym.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Boxing</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17802645/pexels-photo-17802645/free-photo-of-man-boxing-at-gym.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Boxing</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17802645/pexels-photo-17802645/free-photo-of-man-boxing-at-gym.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Boxing</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <div class="mini-container">
+    <img src="https://images.pexels.com/photos/17802645/pexels-photo-17802645/free-photo-of-man-boxing-at-gym.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
+    <div class="mini-description">
+    <div class="description-container">
+    <h3>California Gym<h3>
+    <p>Boxing</p>
+    <p class="button">See Detail</p>
+    </div>
+    </div>
+    </div>
+    <p class="buttonMore">See More</p>
+    </div>
+    <h1>Calculate Your BMI</h1>
+<div class="bmi-calculator">
+    <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="Enter your height in cm">
+    </div>
+    <div class="input-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter your weight in kg">
+    </div>
+    <button class="button">Calculate BMI</button>
+    <div id="result"></div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 style="color: white;">About GymSphere</h3>
+                <p style="color: white;">GymSphere is your ultimate destination for all things fitness. We offer a diverse selection of gyms, experienced coaches, and high-quality fitness products to help you achieve your fitness goals.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 style="color: white;">Contact Us</h3>
+                <p style="color: white;">Email: info@gymsphere.com</p>
+                <p style="color: white;">Phone: 123-456-7890</p>
+            </div>
+            <div class="col-md-4">
+                <h3 style="color: white;">Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f" style="color: white;"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter" style="color: white;"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram" style="color: white;"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
