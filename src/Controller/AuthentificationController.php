@@ -74,6 +74,7 @@ class AuthentificationController extends AbstractController
         }
     }
 
+
     #[Route('/dashboard', name: 'dashboard')]
     public function dashboard(Request $request): Response
     {

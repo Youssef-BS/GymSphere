@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class UserController extends AbstractController
@@ -61,7 +64,60 @@ class UserController extends AbstractController
         return $this->redirectToRoute('userDetail', ['id' => $user->getIdUser()]);
     }
     
-    #[Route('/deleteUser' , name : 'deleteUser')]
+    // #[Route('/deleteUser' , name : 'deleteUser')]
+
+    #[Route('/deleteUser/{id}', name: 'deleteUser', methods: ['GET' , 'POST'])]
+    public function deleteUser($id, UserRepository $repo): Response {
+        $user = $repo->findOneBy(['idUser' => $id]);
+    
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
+    
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_listDB');
+    }
+
+    #[Route('/addUserPage', name: 'addUserPage')]
+    public function addUserPage(): Response
+    {
+    
+        return $this->render('admin/component/addUser.html.twig');
+    }
+
+
+#[Route('/addUser', name: 'addUser', methods: ['POST'])]
+public function addUser(Request $request, EntityManagerInterface $entityManager): Response
+{
+    $username = $request->request->get('nom');
+    $lastName = $request->request->get('prenom');
+    $email = $request->request->get('email');
+    $age = $request->request->get('age');
+    $phoneNumber = $request->request->get('phoneNumber');
+    $password = $request->request->get('password');
+    $role = $request->request->get('role');
+  
+
+    $user = new User();
+    $user->setNom($username);
+    $user->setPrenom($lastName);
+    $user->setEmail($email);
+    $user->setAge($age);
+    $user->setPhoneNumber($phoneNumber);
+    $user->setPassword($password);
+    $user->setIsAdmin($role === 'admin'); 
+    $user->setIsCoach($role === 'coach'); 
+
+    $entityManager->persist($user);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_listDB');
+}
+
+
+
 
     #[Route('/analystic', name: 'analystic')]
     public function getAnalystic() : Response{
@@ -74,6 +130,7 @@ class UserController extends AbstractController
             'users' => $list
         ]);
     }
+
     #[Route('/programs', name: 'programs')]
     public function programs() : Response{
     return $this->render('admin/component/programs.html.twig');

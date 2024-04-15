@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User Form</title>
+    <style>
+        .modern-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+{% include 'admin/component/sideBar.html.twig' %} 
+   <div class="modern-form">
+        <form method="post" action="{{ path('addUser') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" name="nom" placeholder="Nom" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="prenom" placeholder="Prénom" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="number" name="age" placeholder="Âge" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Mot de passe" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phoneNumber" placeholder="Numéro de téléphone" required class="form-control">
+            </div>
+            <div class="form-group">
+                <select name="role" required class="form-control">
+                    <option value="none">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="coach">Coach</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="file" name="nom" class="form-control">
+            </div>
+            <button type="submit" class="btn">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>

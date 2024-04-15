@@ -159,9 +159,10 @@ class User
     public function setPhotoProfile(string $photoProfile): static
     {
         $this->photoProfile = $photoProfile;
-
+    
         return $this;
     }
+    
 
     public function getOtp(): ?string
     {
