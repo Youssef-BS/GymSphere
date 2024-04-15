@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class UserController extends AbstractController
 {
@@ -25,6 +27,41 @@ class UserController extends AbstractController
             'users' => $list
         ]);
     }
+
+    #[Route('/userUpdate/{id}', name: 'userUpdate', methods: ['POST'])]
+    public function updateUser($id, UserRepository $repo, Request $request): Response {
+        // Find the user by id
+        $user = $repo->findOneBy(['idUser' => $id]);
+    
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
+    
+        $user->setPrenom($request->request->get('prenom'));
+        $user->setAge($request->request->get('age'));
+        $user->setEmail($request->request->get('email'));
+        $user->setPassword($request->request->get('password'));
+        $user->setPhoneNumber($request->request->get('phoneNumber'));
+        $role = $request->request->get('role');
+        if ($role === 'admin') {
+            $user->setIsAdmin(true);
+            $user->setIsCoach(false);
+        } elseif ($role === 'coach') {
+            $user->setIsAdmin(false);
+            $user->setIsCoach(true);
+        } else {
+            $user->setIsAdmin(false);
+            $user->setIsCoach(false);
+        }
+    
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+    
+        // Redirect to the user details page
+        return $this->redirectToRoute('userDetail', ['id' => $user->getIdUser()]);
+    }
+    
+    #[Route('/deleteUser' , name : 'deleteUser')]
 
     #[Route('/analystic', name: 'analystic')]
     public function getAnalystic() : Response{
@@ -53,10 +90,18 @@ class UserController extends AbstractController
     public function reclamation() : Response{
     return $this->render('admin/component/reclamation.html.twig');
     }
-    #[Route('/userDetail', name: 'userDetail')]
-    public function userDetails() : Response{
-    return $this->render('admin/component/userDetails.html.twig');
+
+    #[Route('/userDetail/{id}', name: 'userDetail' , methods: ['GET'])]
+    public function userDetails($id, UserRepository $repo): Response {
+        $user = $repo->findOneBy(["idUser" => $id]);
+        return $this->render('admin/component/userDetails.html.twig', [
+            'user' => $user,
+        ]);
     }
+
+
+
+
     #[Route('/productDetails', name: 'productDetails')]
     public function productDetails() : Response{
     return $this->render('admin/component/produitDetails.html.twig');

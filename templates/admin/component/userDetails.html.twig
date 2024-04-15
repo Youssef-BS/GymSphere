@@ -109,38 +109,44 @@ select.editField {
 <div class="userDetails">
   <div class="user-container">
     <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-    <div class="user-info">
-    <p>idUser</p>
-        <p>youssef</p>
-        <p>prenom</p>
-        <p>age</p>
-        <p>email</p>
-        <p>password</p>
-        <p>phoneNumber</p>
-        <p>pdp</p>
-        <p>admin</p>     
+  <div class="user-info">
+    <p>idUser: {{ user.idUser }}</p>
+    <p>Nom: {{ user.nom }}</p>
+    <p>Prénom: {{ user.prenom }}</p>
+    <p>Âge: {{ user.age }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Mot de passe: {{ user.password }}</p>
+    <p>Numéro de téléphone: {{ user.phoneNumber }}</p>
+    <p>isAdmin: {{ user.isAdmin }}</p>
+    <p>isCoach: {{ user.isCoach }}</p>
+    <p>Photo de profil: {{ user.photoProfile }}</p>
+    <p>OTP: {{ user.otp }}</p>
+</div>
+
+
     </div>
-    <div class="consulter">
-    <button>edit</button>
-     </div>
-    </div>
-<div class="editInput">
+<form method="post" action="{{ path('userUpdate', {'id': user.idUser}) }}">
     <label for="fileInput" class="fileInputLabel">Upload Image:</label>
     <input type="file" id="fileInput" name="file" class="fileInput" />
 
-    <input type="number" name="idUser" class="editField" placeholder="User ID" />
-    <input type="text" name="prenom" class="editField" placeholder="First Name" />
-    <input type="number" name="age" class="editField" placeholder="Age" />
-    <input type="email" name="email" class="editField" placeholder="Email" />
-    <input type="password" name="password" class="editField" placeholder="Password" />
-    <input type="tel" name="phoneNumber" class="editField" placeholder="Phone Number" />
+    <input type="number" name="idUser" class="editField" placeholder="User ID" value="{{ user.idUser }}" readonly />
+    <input type="text" name="prenom" class="editField" placeholder="First Name" value="{{ user.prenom }}" />
+    <input type="number" name="age" class="editField" placeholder="Age" value="{{ user.age }}" />
+    <input type="email" name="email" class="editField" placeholder="Email" value="{{ user.email }}" />
+    <input type="password" name="password" class="editField" placeholder="Password" value="{{ user.password }}" />
+    <input type="tel" name="phoneNumber" class="editField" placeholder="Phone Number" value="{{ user.phoneNumber }}" />
 
     <select name="role" class="editField">
         <option value="none">Select Role</option>
-        <option value="admin">Admin</option>
-        <option value="coach">Coach</option>
+        <option value="admin" {% if user.isAdmin %} selected {% endif %}>Admin</option>
+        <option value="coach" {% if user.isCoach %} selected {% endif %}>Coach</option>
     </select>
-</div>
+
+       <div class="consulter">
+    <button>edit</button>
+     </div>
+</form>
+
 
     </div>
 </body>
