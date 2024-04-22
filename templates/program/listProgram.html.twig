@@ -1,0 +1,76 @@
+{% extends 'base1.html.twig' %}
+  
+
+{% block title %}List Programs{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="../public/css/style.css">
+    <main id="main" class="main">
+    
+ <section class="section dashboard">
+
+            <div class="row">
+            <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Liste Programmes</h5>
+                
+ {% for flashMessage in app.flashes('success') %}
+                           <div class="alert alert-success" role="alert">
+                        {{ flashMessage }}
+                    </div>
+                        {% endfor %}
+                         {% for flashMessage in app.flashes('danger') %}
+                           <div class="alert alert-danger" role="alert">
+                        {{ flashMessage }}
+                    </div>
+                        {% endfor %}
+                <table class="table">
+                    <thead >
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Durée</th>
+                            <th>Deadline</th>
+                            <th>Prix</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for program in programs %}
+                            <tr>
+                                <td>{{ program.nom }}</td>
+                                <td>{{ program.description }}</td>
+                                <td>{{ program.duree }}</td>
+                                <td>{{ program.getRegistrationDeadline()|date }}</td>
+                                <td>{{ program.prix }}</td>
+                                <td>
+                                    <a href="{{ path('program_edit', {'id': program.id}) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ path('program_delete', {'id': program.id}) }}" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6" class="text-center">No records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="text-center">
+                    <a href="{{ path('add_program') }}" class="btn btn-success">Create New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </main>
+    {% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.alert').remove();
+            }, 2000); // Remove the alert after 3 seconds
+        });
+    </script>
+{% endblock %}
+{% endblock %}

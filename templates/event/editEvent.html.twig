@@ -1,0 +1,155 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Update Event{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="height: 100vh;">
+         <main id="main" class="main">
+    
+ <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
+         <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update Event</h5>
+            
+
+            <div class="col-md-10">
+                <div >
+                    
+                    
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.nom) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            </div><div>
+                            {{ form_errors(form.description) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.duree, 'Durée', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.duree, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.duree) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.type) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.date_debut, 'Date de début', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.date_debut, {'attr': {'class': 'form-control', 'type': 'date','value': dateDebut|date('Y-m-d')}}) }}
+                            <div></div>
+                            {{ form_errors(form.date_debut) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.nb_participants, 'Nombre de participants', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.nb_participants, {'attr': {'class': 'form-control', 'type': 'number'}}) }}
+                            <div></div>
+                            {{ form_errors(form.nb_participants) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.nb_max, 'Nombre maximal de participants', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.nb_max, {'attr': {'class': 'form-control', 'type': 'number'}}) }}
+                            <div></div>
+                            {{ form_errors(form.nb_max) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.localisation, 'Localisation', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.localisation, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.localisation) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.status, 'Status', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.status) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form_label(form.Program, 'Program', {'label_attr': {'class': 'form-label'}}) }}
+                            <div>
+                            {{ form_widget(form.Program, {'attr': {'class': 'form-control'}}) }}
+                            <div></div>
+                            {{ form_errors(form.Program) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form_widget(form.Save, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+
+                {{ form_end(form) }}
+                <a href="{{ path('list_event') }}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+    </section>
+    </main>
+{% endblock %}
+

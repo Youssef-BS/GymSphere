@@ -1,0 +1,73 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}List Exercises{% endblock %}
+
+{% block body %}
+   
+<main id="main" class="main">
+    
+ <section class="section dashboard">
+
+            <div class="row">
+            <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Liste Exercices</h5>
+            <div class="col-md-10">
+                
+{% for flashMessage in app.flashes('success') %}
+                           <div class="alert alert-success" role="alert">
+                        {{ flashMessage }}
+                    </div>
+                        {% endfor %}
+                <table class="table">
+                    <thead >
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Durée</th>
+                            <th>Difficulté</th>
+                            <th>Video</th>
+                            <th>Program</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for exercice in exercices %}
+                            <tr>
+                                <td>{{ exercice.nom }}</td>
+                                <td>{{ exercice.description }}</td>
+                                <td>{{ exercice.duree }}</td>
+                                <td>{{ exercice.difficulte }}</td>
+                                <td>{{ exercice.video }}</td>
+                                <td>{{ exercice.Program.nom }}</td>
+                                <td>
+                                    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ path('exercice_delete', {'id': exercice.id}) }}" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">No records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="text-center">
+                    <a href="{{ path('add_exercice') }}" class="btn btn-success">Create New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </main>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.alert').remove();
+            }, 2000); // Remove the alert after 3 seconds
+        });
+    </script>
+{% endblock %}
