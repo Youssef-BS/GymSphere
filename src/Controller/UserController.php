@@ -135,10 +135,19 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
 
 
 
-    #[Route('/analystic', name: 'analystic')]
-    public function getAnalystic() : Response{
-    return $this->render('admin/component/analystics.html.twig');
-    }
+#[Route('/analystic', name: 'analystic')]
+public function getAnalystic(UserRepository $userRepository): Response
+{
+
+    $normalUserCount = $userRepository->count(['isCoach' => 0, 'isAdmin' => 0]);
+    $coachCount = $userRepository->count(['isCoach' => 1, 'isAdmin' => 0]);
+    $adminCount = $userRepository->count(['isAdmin' => 1]);
+    return $this->render('admin/component/analystics.html.twig', [
+        'normalUserCount' => $normalUserCount,
+        'coachCount' => $coachCount,
+        'adminCount' => $adminCount,
+    ]);
+}
     #[Route('/users', name: 'users')]
     public function users(UserRepository $repo) : Response{
         $list = $repo->findAll();
@@ -155,7 +164,7 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
     public function gyms() : Response{
     return $this->render('admin/component/gyms.html.twig');
     }
-    #[Route('/products', name: 'produts')]
+    #[Route('/products', name: 'products')]
     public function products() : Response{
     return $this->render('admin/component/products.html.twig');
     }

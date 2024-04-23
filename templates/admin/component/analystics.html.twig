@@ -43,8 +43,9 @@
     <canvas id="myChart" width="400" height="400"></canvas>
 </div>
 <div class="myChartUser">
-    <h3 class="chartTitle">Users</h3>
-    <canvas id="myChartUser" width="400" height="400"></canvas>
+            <h3 class="chartTitle">Users</h3>
+            <canvas id="myChartUser" width="400" height="400"></canvas>
+        </div>
 </div>
 </div>
 </body>
@@ -95,31 +96,36 @@ const config = {
   const myChart = new Chart(ctx, config);
 
 
-  const dataUser = {
-  labels: [
-    'Red',
-    'Green',
-    'Yellow',
-    'Grey',
-    'Blue'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [11, 16, 7, 3, 14],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(75, 192, 192)',
-      'rgb(255, 205, 86)',
-      'rgb(201, 203, 207)',
-      'rgb(54, 162, 235)'
-    ]
-  }]
-};
-const configUser = {
-  type: 'polarArea',
-  data: dataUser,
-  options: {}
-};
+       const userCounts = {
+            normal: {{ normalUserCount }},
+            coach: {{ coachCount }},
+            admin: {{ adminCount }}
+        };
+
+        const dataUser = {
+            labels: ['Normal Users', 'Coaches', 'Admins'],
+            datasets: [{
+                label: 'User Counts',
+                data: [userCounts.normal, userCounts.coach, userCounts.admin],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)', 
+                    'rgba(54, 162, 235, 0.5)', 
+                    'rgba(255, 205, 86, 0.5)', 
+                ]
+            }]
+        };
+
+        const configUser = {
+            type: 'bar',
+            data: dataUser,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
 
 const ctxUser = document.getElementById('myChartUser').getContext('2d');
 const myChartUser = new Chart(ctxUser, configUser);

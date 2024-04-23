@@ -154,6 +154,15 @@
             border-color: #007bff;
             box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
         }
+        .all {
+            display : flex ; 
+            width : 40% ;
+            margin : auto ;
+        }
+
+        h2{
+            text-align : center;
+        }
     </style>
 </head>
 <body>
@@ -161,8 +170,10 @@
  <div class="consulter-user">
     <a href="{{ path('addUserPage') }}">Add User</a>
  </div>
+ <h2>Search for an user</h2>
+ <section class="all">
  <div class="filter-container">
-    <label for="role-filter">Filter by Role:</label>
+    <label for="role-filter"></label>
     <select id="role-filter" class="filter-dropdown">
         <option value="all" selected>All Users</option>
         <option value="admin">Admin</option>
@@ -170,9 +181,10 @@
     </select>
  </div>
  <div class="search-container">
-    <label for="user-search">Search by ID:</label>
+    <label for="user-search"></label>
     <input type="text" id="user-search" class="search-input" placeholder="Enter user ID...">
  </div>
+ </section>
  <div class="container-wrapper">
     <div class="container"> 
     {% for user in users %}
