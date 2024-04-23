@@ -1,0 +1,81 @@
+    <style>
+    .user-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .user-container:hover {
+            transform: translateY(-5px);
+            background-color:#efefee;
+        }
+
+        .user-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+    .container {
+        
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-left : 250px;
+        }
+          .consulter button {
+            background-color: #96C8FF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .consulter button:hover {
+            background-color: white;
+        }
+        .empty{
+           background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; 
+        }
+
+        </style>
+    {% include 'client/components/navbarclient.html.twig' %}
+    
+    <div class="container">
+  
+    {% for product in b %}
+    <div class="user-container">
+        <img src="{{product.photoProduit}}" alt="" />
+        <div class="user-info">
+            <h1>{{ product.nomProduit }}</h1>
+             <p>Price: {{product.prixProduit}}$</p>
+            
+        </div>
+        {%if product.quantiteProduit > 0 %}     
+        <div class="consulter">
+     <button><a href="{{ path('add_to_basket', {'idProduit': product.idProduit, 'userId': idUser}) }}">Add to basket</a></button>
+        </div>
+        {% else %}
+        <p class="empty" >Run Out</p>
+            {% endif %}
+
+    </div>
+    {% endfor %}
+</div>

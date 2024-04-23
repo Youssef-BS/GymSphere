@@ -1,0 +1,38 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
+
+dashboard:
+    path: /dashboard
+    controller: App\Controller\ProduitController::index
+
+analystic:
+    path: /analystic
+    controller: App\Controller\ProduitController::index
+users:
+    path: /users
+    controller: App\Controller\ProduitController::index
+programs:
+    path: /programs
+    controller: App\Controller\ProduitController::index
+produts:
+    path: /produts
+    controller: App\Controller\ProduitController::indexc
+productDetails:
+    path: productDetails
+    controller: App\Controller\ProduitController::indexproduit
+gyms:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+reclamation:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+logout:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+    
+

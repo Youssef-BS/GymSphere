@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-left : 250px;
+        }
+
+        .user-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .user-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .user-container img {
+            border-radius: 5%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .user-info h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .consulter button {
+            background-color: #007bff;
+            color: #eee;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .consulter button:hover {
+            background-color: #0056b3;
+        }
+
+
+.container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-left : 250px;
+        }
+        .add{
+            padding: 20px;
+            margin-left : 250px;
+            margin-top : 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+        .add:hover {
+            background-color: #0056b3;
+            color: black;
+        }
+        .order{
+            padding: 20px;
+            margin-top : 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .order:hover{
+            background-color: #0056b3;
+            color: black;
+        }
+        .solde button {
+            background-color: #3EFF00;
+            color: #eee;
+            border: none;
+            border-radius: 50%;
+            width:40px;
+            height:40px;
+            padding: 4px 4px;
+            margin: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .solde button:hover {
+            background-color: #1EC230;
+        }
+
+    </style>
+</head>
+<button class="add"><a href="{{ path('add_produit')}}">Add Product</a></button>
+<button class="order"><a href="{{ path('app_commande')}}">Manage Orders</a></button>
+<body>
+{% include 'admin/component/sideBar.html.twig' %}
+<div class="container"> <!-- Corrected class name to "container" -->
+    {% for product in b %}
+    <div class="user-container">
+        <img src="{{product.photoProduit}}" alt="" />
+        <div class="user-info">
+            <p>ID: {{ product.idProduit}}</p>
+            <h1>{{ product.nomProduit }}</h1>
+            
+            <p>Price: {{ product.prixProduit}}</p>
+            <p>Quantity: {{ product.quantiteProduit}}</p>
+            
+        </div>
+        <div class="consulter">
+            <button><a href="{{ path('up_produit', {'idProduit': product.idProduit}) }}">edit</a></button>
+            <button><a href="{{ path('del_produit', {'idProduit': product.idProduit}) }}">delete</a></button>
+        </div>
+        <div class="solde">
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 10 }) }}">10%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 20 }) }}">20%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 30 }) }}">30%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 50 }) }}">50%</a></button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
