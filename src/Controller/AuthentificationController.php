@@ -10,8 +10,17 @@ use Symfony\Component\HttpFoundation\Request ;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Firebase\JWT\JWT;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AuthentificationController extends AbstractController
 {
+
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
 
     #[Route('/register', name: 'register')]
     public function register(Request $request, ManagerRegistry $managerRegistry): Response
@@ -30,7 +39,8 @@ class AuthentificationController extends AbstractController
         $user->setEmail($email);
         $user->setAge($age);
         $user->setPhoneNumber($phoneNumber);
-        $user->setPassword($password);
+        $encodedPassword = $this->passwordEncoder->encodePassword($user, $password);
+        $user->setPassword($encodedPassword);
         $entityManager->persist($user);
         $entityManager->flush();
         return $this->redirectToRoute('login');
@@ -58,6 +68,7 @@ class AuthentificationController extends AbstractController
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
+    
         if ($this->isValidCredentials($email, $password)) {
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
             $payload = [
@@ -73,6 +84,8 @@ class AuthentificationController extends AbstractController
             return $this->redirectToRoute('login', ['error' => 'Password or Email is incorrect !']);
         }
     }
+    
+    
 
 
     #[Route('/dashboard', name: 'dashboard')]
@@ -132,8 +145,14 @@ class AuthentificationController extends AbstractController
     private function isValidCredentials(string $email, string $password): bool
     {
         $userRepository = $this->getDoctrine()->getRepository(User::class);
-        $validUser = $userRepository->findOneBy(['email' => $email, 'password' => $password]);
-        return $validUser !== null;
+        $user = $userRepository->findOneBy(['email' => $email]);
+    
+        if (!$user) {
+            return false; 
+        }
+    
+        $passwordEncoder = $this->passwordEncoder;
+        return $passwordEncoder->isPasswordValid($user, $password);
     }
     
 }

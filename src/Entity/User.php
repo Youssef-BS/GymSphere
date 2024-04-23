@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -174,5 +175,28 @@ class User
         $this->otp = $otp;
 
         return $this;
+    }
+
+    public function getRoles()
+    {
+        // Define user roles here, if needed
+        return ['ROLE_USER'];
+    }
+    
+    // Implement other methods required by UserInterface
+    public function getUsername()
+    {
+        return $this->email; // Assuming email is the username
+    }
+
+    public function getSalt()
+    {
+        // Leave this empty if not using plain passwords
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
     }
 }

@@ -22,14 +22,30 @@ class UserController extends AbstractController
     //         'controller_name' => 'UserController',
     //     ]);
     // }
-
-    #[Route('/getAll', name: 'app_listDB')]
-    public function getAll(UserRepository $repo) : Response{
-        $list = $repo->findAll();
+    #[Route('/getAll/{role?}/{search?}', name: 'app_listDB')]
+    public function getAll(UserRepository $repo, ?string $role = null, ?string $search = null): Response
+    {
+        if ($role === 'admin') {
+            $usersQuery = $repo->findBy(['isAdmin' => true]);
+        } elseif ($role === 'coach') {
+            $usersQuery = $repo->findBy(['isCoach' => true]);
+        } else {
+            $usersQuery = $repo->findAll();
+        }
+    
+        if ($search) {
+            $usersQuery = $repo->createQueryBuilder('u')
+                ->where('u.idUser = :searchTerm')
+                ->setParameter('searchTerm', $search)
+                ->getQuery()
+                ->getResult();
+        }
+    
         return $this->render('admin/component/users.html.twig', [
-            'users' => $list
+            'users' => $usersQuery
         ]);
     }
+    
 
     #[Route('/userUpdate/{id}', name: 'userUpdate', methods: ['POST'])]
     public function updateUser($id, UserRepository $repo, Request $request): Response {
