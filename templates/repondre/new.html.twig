@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Repondre{% endblock %}
+
+{% block body %}
+    <h1>Create new Repondre</h1>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.titre, 'Titre') }}
+                    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.reponse, 'Réponse') }}
+                    {{ form_widget(form.reponse, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.dateReponse, 'Date de Réponse') }}
+                    {{ form_widget(form.dateReponse, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.iduser, 'ID Utilisateur') }}
+                    {{ form_widget(form.iduser, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.idreclamation, 'ID Réclamation') }}
+                    {{ form_widget(form.idreclamation, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ path('app_repondre_index') }}" class="btn btn-secondary mt-3">Back to list</a>
+{% endblock %}

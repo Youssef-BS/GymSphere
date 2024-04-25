@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Statistiques des Réclamations</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('chartjs') }}
+    {% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+    .export-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .export-button:hover {
+            background-color: #218838;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-left: 250px;
+        }
+
+        .user-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .user-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .user-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .user-info h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .consulter button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .consulter button:hover {
+            background-color: #0056b3;
+        }
+
+.stat {
+    width : 100%;
+    height : 300px;
+}
+        canvas#pieChart {
+            margin: auto;
+            display: block; 
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% include 'admin/component/sideBar.html.twig' %}
+    <div class="container"> 
+        {% set types = {} %}
+        {% for reclamation in reclamations %}
+            {% if types[reclamation.type] is not defined %}
+                {% set types = types|merge({ (reclamation.type): 1 }) %}
+            {% else %}
+                {% set types = types|merge({ (reclamation.type): types[reclamation.type] + 1 }) %}
+            {% endif %}
+        {% endfor %}
+
+
+  
+
+        <!-- Boucle pour afficher les réclamations -->
+        {% for reclamation in reclamations %}
+            <div class="user-container">
+                <!-- Affichage des données de réclamation -->
+                <h2>{{ reclamation.titre }}</h2>
+                <p>Type: {{ reclamation.type }}</p>
+                <p>Description: {{ reclamation.description }}</p>
+                <p>Date: {{ reclamation.dateReclamation|date('Y-m-d') }}</p>
+                <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+                <div class="user-info"></div>
+                
+                <!-- Boutons pour les actions -->
+                <div class="consulter">
+                    <button><a href="{{ path('edit_reclamation', {'id': reclamation.id}) }}">consulter</a></button>
+                    <button><a href="{{ path('delete_reclamation', {'id': reclamation.id}) }}">delete</a></button>
+                    <button><a href="{{ path('app_repondre_new' )}}">repondre</a></button>
+                    <button class="export-button"><a href="{{ path('export_reclamations_excel') }}">Exporter en Excel</a></button>
+                    <form action="{{ path('generate_pdf', { 'reclamationId': reclamation.id }) }}" method="post" target="_blank">
+                        <button type="submit">Télécharger en PDF</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+
+      <h1 style="text-align: center;">Statistiques des Types de Réclamations</h1>
+<canvas id="typeStatsChart" width="300" height="200"></canvas>
+
+<script>
+    var typesStats = {{ typesStats | json_encode | raw }};
+    var ctx = document.getElementById('typeStatsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(typesStats),
+            datasets: [{
+                label: 'Nombre de réclamations par type',
+                data: Object.values(typesStats),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+    </div>
+</body>
+</html>

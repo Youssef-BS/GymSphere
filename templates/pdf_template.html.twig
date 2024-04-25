@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclamation Details</title>
+    <style>
+        /* Your CSS styles here */
+        /* Ensure the styles are compatible with TCPDF */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Your logo -->
+        <img src="{{ (asset('/SymfonyDev-main/public/images/gym.png')) }}" alt="Logo" class="logo">
+        
+        <!-- Reclamation details -->
+        <div class="reclamation-details">
+            <h2>Reclamation Details</h2>
+            <p><strong>ID:</strong> {{ reclamation.id }}</p>
+            <p><strong>Object:</strong> {{ reclamation.titre }}</p>
+            <p><strong>Type:</strong> {{ reclamation.type }}</p>
+            <p><strong>Description:</strong> {{ reclamation.description }}</p>
+            <p><strong>Date:</strong> {{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</p>
+            <!-- Add more reclamation details as needed -->
+        </div>
+
+
+        <!-- Bouton pour générer le PDF -->
+        {# <form action="{{ path('generate_pdf', { 'reclamationId': reclamation.id }) }}" method="post" target="_blank">
+            <button type="submit">Télécharger en PDF</button>
+        </form> #}
+    </div>
+</body>
+</html>
