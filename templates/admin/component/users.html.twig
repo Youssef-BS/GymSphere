@@ -192,7 +192,6 @@
         {% if user.photoProfile %}
             <img src="{{ asset('images/' ~ user.photoProfile) }}" alt="{{ user.nom }}" />
         {% else %}
-            <!-- If the user doesn't have a profile photo, you can display a default placeholder image -->
             <img src="{{ asset('images/default_profile_image.jpg') }}" alt="Default Profile Image" />
         {% endif %}
         <div class="user-info">

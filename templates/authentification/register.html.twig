@@ -54,7 +54,7 @@
 
 <div class="register-container">
     <h2>Register</h2>
-    <form action="{{ path('register') }}" method="POST">
+    <form action="{{ path('register') }}" method="POST" enctype="multipart/form-data">
     <div class="partOne">
         <div class="mb-3">
             <label for="name" class="form-label">First Name</label>
@@ -85,6 +85,11 @@
         <div class="mb-3">
             <label for="password" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="partTwo">
+        <div class="mb-3">
+            <label for="avatar" class="form-label">Avatar</label>
+            <input type="file" class="form-control" id="avatar" name="image" required>
         </div>
         <button type="submit" class="btn btn-primary btn-register btn-block">Register</button>
     </form>

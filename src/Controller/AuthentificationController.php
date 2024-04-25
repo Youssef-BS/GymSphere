@@ -8,9 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request ;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Firebase\JWT\JWT;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class AuthentificationController extends AbstractController
 {
 
@@ -33,7 +36,23 @@ class AuthentificationController extends AbstractController
         $age = $request->request->get('age');
         $phoneNumber = $request->request->get('phoneNumber');
         $password = $request->request->get('password');
+        $imageFile = $request->files->get('image');
+
+
         $user = new User();
+        
+        if($imageFile instanceof UploadedFile) {
+            $fileName = md5(uniqid()).'.'.$imageFile->guessExtension();
+            try {
+                $imageFile->move(
+                    $this->getParameter('kernel.project_dir') . '/public/images/', $fileName 
+                );
+            }catch(FileException $e) {
+            
+            } ;
+
+            $user->setPhotoProfile($fileName);
+        }
         $user->setNom($username);
         $user->setPrenom($lastName);
         $user->setEmail($email);
