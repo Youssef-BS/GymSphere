@@ -15,13 +15,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class UserController extends AbstractController
 {
   
-    // #[Route('/user', name: 'app_user')]
-    // public function index(): Response
-    // {
-    //     return $this->render('admin/index.html.twig', [
-    //         'controller_name' => 'UserController',
-    //     ]);
-    // }
     #[Route('/getAll/{role?}/{search?}', name: 'app_listDB')]
     public function getAll(UserRepository $repo, ?string $role = null, ?string $search = null): Response
     {
@@ -32,7 +25,6 @@ class UserController extends AbstractController
         } else {
             $usersQuery = $repo->findAll();
         }
-    
         if ($search) {
             $usersQuery = $repo->createQueryBuilder('u')
                 ->where('u.idUser = :searchTerm')
@@ -49,7 +41,6 @@ class UserController extends AbstractController
 
     #[Route('/userUpdate/{id}', name: 'userUpdate', methods: ['POST'])]
     public function updateUser($id, UserRepository $repo, Request $request): Response {
-        // Find the user by id
         $user = $repo->findOneBy(['idUser' => $id]);
     
         if (!$user) {
@@ -75,12 +66,9 @@ class UserController extends AbstractController
     
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->flush();
-    
-        // Redirect to the user details page
         return $this->redirectToRoute('userDetail', ['id' => $user->getIdUser()]);
     }
-    
-    // #[Route('/deleteUser' , name : 'deleteUser')]
+
 
     #[Route('/deleteUser/{id}', name: 'deleteUser', methods: ['GET' , 'POST'])]
     public function deleteUser($id, UserRepository $repo): Response {
