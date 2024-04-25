@@ -188,20 +188,26 @@
  <div class="container-wrapper">
     <div class="container"> 
     {% for user in users %}
-        <div class="user-container" data-user-id="{{ user.idUser }}" data-role="{{ user.isAdmin ? 'admin' : (user.isCoach ? 'coach' : 'user') }}">
-            <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
-            <div class="user-info">
-                <h1>{{ user.nom }}</h1>
-                <p>{{ user.isAdmin ? 'Admin' : 'User' }}</p>
-            </div>
-            <div class="consulter">
-                <form method="post" action="{{ path('deleteUser', {'id': user.idUser}) }}" onsubmit="return confirm('Are you sure you want to delete this user?')">
-                    <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
-                    <a href="{{ path('deleteUser', {'id': user.idUser}) }}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
-                </form>
-            </div>
+    <div class="user-container" data-user-id="{{ user.idUser }}" data-role="{{ user.isAdmin ? 'admin' : (user.isCoach ? 'coach' : 'user') }}">
+        {% if user.photoProfile %}
+            <img src="{{ asset('images/' ~ user.photoProfile) }}" alt="{{ user.nom }}" />
+        {% else %}
+            <!-- If the user doesn't have a profile photo, you can display a default placeholder image -->
+            <img src="{{ asset('images/default_profile_image.jpg') }}" alt="Default Profile Image" />
+        {% endif %}
+        <div class="user-info">
+            <h1>{{ user.nom }}</h1>
+            <p>{{ user.isAdmin ? 'Admin' : 'User' }}</p>
         </div>
-    {% endfor %}
+        <div class="consulter">
+            <form method="post" action="{{ path('deleteUser', {'id': user.idUser}) }}" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
+                <a href="{{ path('deleteUser', {'id': user.idUser}) }}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+            </form>
+        </div>
+    </div>
+{% endfor %}
+
     </div>
  </div>
 

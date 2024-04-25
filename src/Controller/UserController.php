@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 class UserController extends AbstractController
@@ -91,35 +92,48 @@ class UserController extends AbstractController
         return $this->render('admin/component/addUser.html.twig');
     }
 
+    #[Route('/addUser', name: 'addUser', methods: ['POST'])]
+    public function addUser(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $username = $request->request->get('nom');
+        $lastName = $request->request->get('prenom');
+        $email = $request->request->get('email');
+        $age = $request->request->get('age');
+        $phoneNumber = $request->request->get('phoneNumber');
+        $password = $request->request->get('password');
+        $role = $request->request->get('role');
 
-#[Route('/addUser', name: 'addUser', methods: ['POST'])]
-public function addUser(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $username = $request->request->get('nom');
-    $lastName = $request->request->get('prenom');
-    $email = $request->request->get('email');
-    $age = $request->request->get('age');
-    $phoneNumber = $request->request->get('phoneNumber');
-    $password = $request->request->get('password');
-    $role = $request->request->get('role');
-  
+        $user = new User();
+        $user->setNom($username);
+        $user->setPrenom($lastName);
+        $user->setEmail($email);
+        $user->setAge($age);
+        $user->setPhoneNumber($phoneNumber);
+        $user->setPassword($password);
+        $user->setIsAdmin($role === 'admin'); 
+        $user->setIsCoach($role === 'coach'); 
 
-    $user = new User();
-    $user->setNom($username);
-    $user->setPrenom($lastName);
-    $user->setEmail($email);
-    $user->setAge($age);
-    $user->setPhoneNumber($phoneNumber);
-    $user->setPassword($password);
-    $user->setIsAdmin($role === 'admin'); 
-    $user->setIsCoach($role === 'coach'); 
+        // Image upload handling
+        $imageFile = $request->files->get('image');
+        if ($imageFile instanceof UploadedFile) {
+            $fileName = md5(uniqid()).'.'.$imageFile->guessExtension();
+            try {
+                $imageFile->move(
+                    $this->getParameter('kernel.project_dir') . '/public/images/',
+                    $fileName
+                );
+            
+            } catch (FileException $e) {
+            
+            }
+            $user->setPhotoProfile($fileName);
+        }
 
-    $entityManager->persist($user);
-    $entityManager->flush();
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-    return $this->redirectToRoute('app_listDB');
-}
-
+        return $this->redirectToRoute('app_listDB');
+    }
 
 
 
