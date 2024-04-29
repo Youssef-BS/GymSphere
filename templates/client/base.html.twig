@@ -53,8 +53,6 @@
                 .then(response => response.json())
                 .then(data => {
                     const responseText = data.fulfillmentText;
-                    
-                    // Play text-to-speech audio
                     textToSpeech(responseText);
                 })
                 .catch(error => {
@@ -65,7 +63,6 @@
             recognition.start();
         }
 
-        // Function to convert text to speech using Web Speech API
         function textToSpeech(text) {
             const utterance = new SpeechSynthesisUtterance();
             utterance.text = text;
