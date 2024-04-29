@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement Details{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Abonnement Details</h1>
+
+    <div class="abonnement-details">
+        <div class="row">
+            <div class="col-md-6">
+                <dl>
+                    <dt>ID</dt>
+                    <dd>{{ abonnement.idAbonnement }}</dd>
+
+                    <dt>Date Début</dt>
+                    <dd>{{ abonnement.dateDebut|date('Y-m-d') }}</dd>
+
+                    <dt>Date Fin</dt>
+                    <dd>{{ abonnement.dateFin|date('Y-m-d') }}</dd>
+
+                    <dt>Prix</dt>
+                    <dd>{{ abonnement.prix }}</dd>
+
+                    <dt>Payment</dt>
+                    <dd>{{ abonnement.payment ? 'Paid' : 'Not Paid' }}</dd>
+
+                    <dt>ID User</dt>
+                    <dd>{{ abonnement.idUser }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    {# Add buttons or links for editing or deleting the Abonnement #}
+    <div class="mt-3">
+        <a href="{{ path('abonnement_edit', {'id': abonnement.idAbonnement}) }}" class="btn btn-primary">Edit</a>
+    </div>
+</div>
+{% endblock %}

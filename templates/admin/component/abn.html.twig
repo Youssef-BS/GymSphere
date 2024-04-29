@@ -65,9 +65,8 @@ h1 {
             <td>{{ abonnement.payment ? 'Paid' : 'Not Paid' }}</td>
             <td>{{ abonnement.idUser }}</td>
             <td>
-              {# <a href="{{ path('abonnement_show', {'id': abonnement.idAbonnement}) }}">Show</a>
-              <a href="{{ path('abonnement_edit', {'id': abonnement.idAbonnement}) }}">Edit</a> #}
-              <a href="{{ path('abonnement_delete', {'id': abonnement.idAbonnement}) }}" onclick="return confirm('Are you sure?')">Delete</a> 
+               {# <a href="{{ path('abonnement_show', {'id': abonnement.idAbonnement}) }}">Show</a> #}
+              <a href="{{ path('deleteAbn', {'id': abonnement.idAbonnement}) }}" onclick="return confirm('Are you sure?')">Delete</a> 
             </td>
           </tr>
         {% endfor %}
