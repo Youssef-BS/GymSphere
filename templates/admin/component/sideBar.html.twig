@@ -1,0 +1,175 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<style>
+.sidebar {
+  flex: 1;
+  height: 100vh;
+  background-color: rgb(251, 251, 255);
+  position: fixed;
+  top: 0;
+  left : 0;
+  width : 230px;
+  align-items : center;
+  overflow: scroll !important;
+}
+
+.sidebarWrapper {
+  padding: 18px;
+  color: #555;
+  align-items :center;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarListItem {
+  padding: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: rgb(240, 240, 255);
+}
+
+.sidebarIcon {
+  margin-right: 5px;
+  font-size: 18px !important;
+}
+li , a{
+  text-decoration: none;
+  color : black;
+  align-items:center;
+  margin-left: 5px; 
+}
+
+
+ul {
+  align-items: center;
+}
+</style>
+ <body>
+ <div class="sidebar">
+      <div class="sidebarWrapper">
+        <div class="sidebarMenu">
+          <h3 class="sidebarTitle">Dashboard</h3>
+          <ul class="sidebarList">
+            {# <Link to="/" class="link"> #}
+            <li class="sidebarListItem active ">
+            <span class="material-symbols-outlined">
+home
+</span>
+              <LineStyle class="sidebarIcon" />
+             <a href="{{ path('dashboard') }}">Home</a>
+            </li>
+            {# </Link> #}
+            <li class="sidebarListItem">
+              <Timeline class="sidebarIcon" />
+              <span class="material-symbols-outlined">
+show_chart
+</span>
+              <a href="{{ path('analystic') }}">Analytics</a>
+            </li>
+            <li class="sidebarListItem">
+              <TrendingUp class="sidebarIcon" />
+              <span class="material-symbols-outlined">
+real_estate_agent
+</span>
+              Sales
+            </li>
+          </ul>
+        </div>
+        <div class="sidebarMenu">
+          <h3 class="sidebarTitle">Quick Menu</h3>
+          <ul class="sidebarList">
+            {# <Link to="/users" class="link"> #}
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                <span class="material-symbols-outlined">
+group
+</span>
+                   <a href="{{ path('users') }}">Users</a>
+              </li>
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                <span class="material-symbols-outlined">
+sports
+</span>
+                Coachs
+              </li>
+              <li class="sidebarListItem">
+                <PermIdentity class="sidebarIcon" />
+                <span class="material-symbols-outlined">
+energy_program_time_used
+</span>
+                  <a href="{{ path('programs') }}">Programs</a> 
+              </li>
+            {# </Link> #}
+            {# <Link to="/products" class="link"> #}
+              <li class="sidebarListItem">
+                <Storefront class="sidebarIcon" />
+                <span class="material-symbols-outlined">
+production_quantity_limits
+</span>
+                <a href="{{ path('produts') }}">Products</a> 
+              </li>
+              <li class="sidebarListItem">
+                <Storefront class="sidebarIcon" />
+                <span class="material-symbols-outlined">
+fitness_center
+</span>
+                <a href="{{ path('gyms') }}">Gyms</a> 
+              </li>
+            {# </Link> #}
+          <li class="sidebarListItem">
+    <span class="material-symbols-outlined">
+calendar_month
+</span>
+    <a href="{{ path('calandrier') }}">Calandrier</a> 
+</li>
+
+            {# </Link> #}
+            
+            <li class="sidebarListItem">
+            <span class="material-symbols-outlined">
+paid
+</span>
+              <AttachMoney class="sidebarIcon" />
+              Transactions
+            </li>
+            <li class="sidebarListItem">
+            <span class="material-symbols-outlined">
+report
+</span>
+              <BarChart class="sidebarIcon" />
+             <a href="{{ path('reclamation') }}">Reclamations</a>  
+            </li>
+             <li class="sidebarListItem">
+             <span class="material-symbols-outlined">
+chat_bubble
+</span>
+              <ChatBubbleOutline class="sidebarIcon" />
+              Messages
+            </li>
+          </ul>
+        </div> 
+          <ul class="sidebarList">
+          <a href="{{path('logout')}}">
+            <li class="sidebarListItem">
+            <span class="material-symbols-outlined">logout</span>
+              <ChatBubbleOutline class="sidebarIcon" />
+              Logout
+            </li>
+             </a>
+          </ul>
+        </div>
+      
+    </div>

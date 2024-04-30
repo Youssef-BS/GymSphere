@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .register-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        
+        }
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        form {
+            display:flex;
+        }
+        .form-control {
+            border-radius: 20px;
+        }
+        .btn-register {
+            border-radius: 20px;
+            margin : auto ;
+        }
+        .link {
+            padding-top: 8px;
+            cursor: pointer;
+            text-align:center;
+            color: #007bff;
+            font-weight: 500 ;
+        
+        }
+        .partTwo {
+            margin-left:12px;
+        }
+        .partOne , .partTwo {
+            max-width:250px ; 
+        }
+      
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Register</h2>
+    <form action="{{ path('register') }}" method="POST">
+    <div class="partOne">
+        <div class="mb-3">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+        </div>
+        </div>
+        <div class="partTwo">
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-register btn-block">Register</button>
+    </form>
+    <p class="link">
+    <a href="{{path('login')}}"> Already have an account? </a>
+    </p>
+</div>
+</div>
+</body>
+</html>

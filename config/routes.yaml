@@ -1,0 +1,15 @@
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+
+calandrier:
+    path: /calandrier
+    controller: App\Controller\CalandrierController::index
+
+
+# filter_gyms_by_address:
+#     path: '/filter_gyms_by_address'
+#     controller: App\Controller\GymController::filterGymsByAddress'
+#     methods: ['GET']
