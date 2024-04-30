@@ -54,8 +54,9 @@ class CommandeController extends AbstractController
     $commande->setUser($user);
     
     $entityManager->persist($commande);
-   
+ 
     $entityManager->flush();
+    $this->addFlash('success', 'The order has been confirmed!');
     
     return $this->redirectToRoute('app_list');
     }
@@ -72,14 +73,14 @@ class CommandeController extends AbstractController
         }
         $commande->setCommandeSt(0);
         $entityManager->flush();
-
+        $this->addFlash('success', 'The order has been confirmed!');
         $user = $commande->getUser();
 
 
         $email = (new Email())
         ->from('ahmet26chokri@gmail.com')
-        ->to('scfldmckl@gmail.com')
-        ->subject('Your Order ')
+        ->to($user->getEmail())
+        ->subject('Your Order  ')
         ->text('Your order has been confirmed.');
 
         $mailer->send($email);

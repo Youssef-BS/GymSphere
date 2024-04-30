@@ -1,3 +1,22 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+root_route_redirect:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        path: /en
+        permanent: true
+
+home_page_en:
+    path: Home/en
+    controller: App\Controller\PanierController::index
+    defaults:
+        _locale: en
+
+home_page_fr:
+    path: Home/fr
+    controller: App\Controller\PanierController::index
+    defaults:
+        _locale: fr

@@ -38,6 +38,24 @@
             "./migrations/.gitignore"
         ]
     },
+    "endroid/qr-code-bundle": {
+        "version": "5.0.1"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.9.0"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v5.1.0"
+    },
+    "phiil/googlesheets-translation-bundle": {
+        "version": "5.4.0"
+    },
+    "php-flasher/flasher-symfony": {
+        "version": "v1.15.14"
+    },
+    "php-flasher/flasher-toastr-symfony": {
+        "version": "v1.15.14"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -127,6 +145,18 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/mercure-bundle": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "0.3",
+            "ref": "d097c114aae82c5bc88d48ac164fe523f1003292"
+        },
+        "files": [
+            "./config/packages/mercure.yaml"
+        ]
     },
     "symfony/messenger": {
         "version": "5.4",

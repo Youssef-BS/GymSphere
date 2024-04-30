@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Intl\Locales;
+
+use Symfony\Component\Mercure\HubInterface;
+use Symfony\Component\Mercure\Update;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
@@ -14,10 +18,15 @@ use App\Form\UserChoiceType;
 
 class ProduitController extends AbstractController
 {
+   
+
+    
     #[Route('/admin', name: 'app_produit')]
     public function index(): Response
     {
         $produit = $this->getDoctrine()->getManager()->getRepository(Produit::class)->findAll();
+        
+
         return $this->render('admin/index.html.twig', [
             'b'=>$produit
         ]);
@@ -56,6 +65,7 @@ class ProduitController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
+            $this->addFlash('success', 'The product has been added!');
             return $this->redirectToRoute('app_admin');
         }}
         return $this->render('produit/form.html.twig',['f'=>$form->createView()]);
@@ -73,6 +83,7 @@ class ProduitController extends AbstractController
 
         $entityManager->remove($produit);
         $entityManager->flush();
+        $this->addFlash('success', 'The product has been deleted');
         return $this->redirectToRoute('app_admin');
     }
 
@@ -100,18 +111,30 @@ class ProduitController extends AbstractController
         }
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            
+            $this->addFlash('success', 'The product has been updated!');
             return $this->redirectToRoute('up_produit', ['idProduit' => $idProduit]);
         }
         return $this->render('admin/component/produitDetails.html.twig',['f'=>$form->createView(),'produit' => $produit]);
     }
     
     #[Route('/product', name: 'app_admin')]
-    public function indexc(): Response
+    public function indexc(Request $request): Response
     {
-        $produit = $this->getDoctrine()->getManager()->getRepository(Produit::class)->findAll();
+        $entityManager = $this->getDoctrine()->getManager();
+        $produitRepository = $entityManager->getRepository(Produit::class);
+        $searchTerm = $request->query->get('q');
+        if ($searchTerm) {
+            $produits = $produitRepository->createQueryBuilder('p')
+                ->where('p.nomProduit LIKE :searchTerm')
+                ->setParameter('searchTerm', '%'.$searchTerm.'%')
+                ->getQuery()
+                ->getResult();
+        } else {
+            $produits = $produitRepository->findAll();
+        }
+
         return $this->render('admin/component/products.html.twig', [
-            'b'=>$produit
+            'b'=>$produits
         ]);
     }
     #[Route('/admin/product', name: 'prod_admin')]
@@ -129,7 +152,7 @@ class ProduitController extends AbstractController
         $discountedPrice = $originalPrice * ( 1 - ($discount / 100)); 
         $product->setPrixProduit($discountedPrice);
         $entityManager->flush();
-    
+        $this->addFlash('success', 'The product has been offred');
         return $this->redirectToRoute('app_admin'); 
     }
 

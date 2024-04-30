@@ -28,10 +28,15 @@ class PanierController extends AbstractController
     {   
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->find(80);
+        $searchTerm = $request->query->get('q');
         $queryBuilder = $entityManager->createQueryBuilder();
         $queryBuilder->select('p')
                      ->from(Produit::class, 'p')
                      ->where('p.quantiteProduit >=0');
+                     if ($searchTerm) {
+                        $queryBuilder->andWhere('p.nomProduit LIKE :searchTerm')
+                                     ->setParameter('searchTerm', '%'.$searchTerm.'%');
+                    }
         $produits = $queryBuilder->getQuery()->getResult();
     
         return $this->render('client/components/list.html.twig', [
@@ -66,6 +71,7 @@ public function addToBasket(int $idProduit): Response
     $panier->setIdUser($user->getidUser());
     $entityManager->persist($panier);
     $entityManager->flush();
+    $this->addFlash('success', 'The product has been added to the basket.');
     return $this->redirectToRoute('app_list');
 } else {
     return $this->redirectToRoute('app_list');
@@ -78,16 +84,19 @@ public function addToBasket(int $idProduit): Response
     $panierItems = $entityManager->getRepository(Panier::class)->findBy(['idUser' => $idUser,'status' => 1 ]);
 
     $totalPrice = 0;
+    
     foreach ($panierItems as $item) {
         $totalPrice += $item->getProduit()->getPrixProduit();
+        
     }
-    
+   
         return $this->render('client/components/panier.html.twig', [
             'controller_name' => 'PanierController',
             'idUser' => $idUser,
             'panierItems' => $panierItems,
             'totalPrice' => $totalPrice,
         ]);
+        
     }
 
     #[Route('/delpanier/{idProduit}', name: 'del_pan')]

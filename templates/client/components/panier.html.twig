@@ -68,6 +68,16 @@ body {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+ {% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+			{% endfor %}
+
     <div class="basket-container">
         <h1>Shopping Basket</h1>
         <p>User ID: {{ idUser }}</p>

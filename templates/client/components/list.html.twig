@@ -1,3 +1,4 @@
+
     <style>
     .user-container {
             background-color: #fff;
@@ -54,12 +55,40 @@
             cursor: pointer;
             transition: background-color 0.3s ease; 
         }
+form {
+    padding:20px; 
+  margin-left: 35%; 
+}
 
+form input[type="text"] {
+  width: 300px; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 16px; 
+}
+form input[type="text"]:hover {
+  background-color: #E7E7E7; 
+}
         </style>
     {% include 'client/components/navbarclient.html.twig' %}
     
+
+    {% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+			{% endfor %}
+     <form action="{{ path('app_list') }}" method="get">
+    <input type="text" name="q" placeholder="Search products...">
+</form>
+       
     <div class="container">
-  
+
+
     {% for product in b %}
     <div class="user-container">
         <img src="{{product.photoProduit}}" alt="" />
@@ -79,3 +108,11 @@
     </div>
     {% endfor %}
 </div>
+  <script>
+const searchInput = document.querySelector('input[name="q"]');
+        
+        searchInput.addEventListener('input', function() {
+            this.form.submit();
+        });
+
+</script>

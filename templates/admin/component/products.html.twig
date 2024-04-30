@@ -55,6 +55,7 @@
             background-color: #007bff;
             color: #eee;
             border: none;
+            width:80px;
             border-radius: 4px;
             padding: 8px 16px;
             margin: 5px;
@@ -64,6 +65,21 @@
 
         .consulter button:hover {
             background-color: #0056b3;
+        }
+        .del button {
+            background-color: #FF0000;
+            color: black;
+            border: none;
+            width:80px;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .del button:hover {
+            background-color: #C20000;
         }
 
 
@@ -120,13 +136,41 @@
         .solde button:hover {
             background-color: #1EC230;
         }
+form {
+    padding:20px; 
+  margin-left: 35%; 
+}
 
+form input[type="text"] {
+  width: 300px; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 16px; 
+}
+form input[type="text"]:hover {
+  background-color: #E7E7E7; 
+}
     </style>
 </head>
+
 <button class="add"><a href="{{ path('add_produit')}}">Add Product</a></button>
 <button class="order"><a href="{{ path('app_commande')}}">Manage Orders</a></button>
+<form action="{{ path('app_admin') }}" method="get">
+    <input type="text" name="q" placeholder="Search products...">
+</form>
+
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
+{% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+        
+			{% endfor %}
 <div class="container"> <!-- Corrected class name to "container" -->
     {% for product in b %}
     <div class="user-container">
@@ -141,6 +185,8 @@
         </div>
         <div class="consulter">
             <button><a href="{{ path('up_produit', {'idProduit': product.idProduit}) }}">edit</a></button>
+            </div>
+            <div class="del">
             <button><a href="{{ path('del_produit', {'idProduit': product.idProduit}) }}">delete</a></button>
         </div>
         <div class="solde">
@@ -155,3 +201,11 @@
 
 </body>
 </html>
+ <script>
+const searchInput = document.querySelector('input[name="q"]');
+        
+        searchInput.addEventListener('input', function() {
+            this.form.submit();
+        });
+
+</script>

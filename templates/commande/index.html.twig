@@ -91,7 +91,14 @@
     </style>
 </head>
 <body>
-
+ {% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+			{% endfor %}
     <div class="sidebar">
         {% include 'admin/component/sideBar.html.twig' %}
     </div>

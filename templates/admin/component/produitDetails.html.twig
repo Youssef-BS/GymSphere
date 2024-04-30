@@ -148,6 +148,14 @@ form button:hover {
 </style>
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
+{% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+			{% endfor %}
 <div class="userDetails">
   <div class="user-container">
     <img src="{{ asset(produit.photoProduit)}}"/>

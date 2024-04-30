@@ -54,7 +54,14 @@ form button:hover {
     margin: -50px auto;
 }
 </style>
-
+{% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+			{% endfor %}
 {% include 'admin/component/sideBar.html.twig' %}
 <h2 class="add">Add a product</h2>
 {{form_start(f)}}
