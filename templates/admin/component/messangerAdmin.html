@@ -71,7 +71,7 @@ h1 {
 }
 
 </style>
-<h1>Communtity</h1>
+    <h1>Community</h1>
     <div class="container">   
         <div class="chat-box">
             <div id="messages" class="messages"></div>
@@ -84,31 +84,38 @@ h1 {
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const socket = io('http://localhost:5000'); 
+            const socket = io('{{ websocket_url }}'); // Use the dynamic URL from Symfony
 
+            // Function to display messages
             function displayMessage(message) {
                 const messageElement = document.createElement('div');
                 messageElement.textContent = message;
                 document.getElementById('messages').appendChild(messageElement);
             }
 
+            // Event listener for receiving messages
             socket.on('receive-message', function (message) { 
                 console.log('Received message:', message);
                 displayMessage(message);
             });
 
-            document.getElementById('send-button').addEventListener('click', function () {
+            // Function to send a message
+            function sendMessage() {
                 const message = document.getElementById('message-input').value;
                 if (message.trim() !== '') {
                     socket.emit('send-message', message); 
                     document.getElementById('message-input').value = '';
                     displayMessage('You: ' + message); 
                 }
-            });
+            }
 
+            // Event listener for send button click
+            document.getElementById('send-button').addEventListener('click', sendMessage);
+
+            // Event listener for Enter key press in message input
             document.getElementById('message-input').addEventListener('keypress', function (event) {
                 if (event.key === 'Enter') {
-                    document.getElementById('send-button').click();
+                    sendMessage();
                 }
             });
         });
