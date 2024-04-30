@@ -6,7 +6,14 @@
      <main id="main" class="main">
     
  <section class="section dashboard">
-
+<form method="get" action="{{ path('list_event') }}">
+    <select name="filter">
+        <option value="all">All Events</option>
+        <option value="available">Available Events</option>
+    </select>
+    <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+</form>
+<br>
             <div class="row">
             <div class="card">
             <div class="card-body">
@@ -64,7 +71,14 @@
             </div>
         </div>
     </div>
+     <div class="row">
+     <div class="card">
+     <div class="card-body">
+      {% include 'event/statistics.html.twig' %}
+      </div></div></div>
      </section>
+     
+    
     </main>
 {% endblock %}
 {% block javascripts %}

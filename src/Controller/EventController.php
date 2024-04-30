@@ -3,10 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Participation;
+use App\Entity\User;
 use App\Form\EventType;
+use App\Manager\ProgramManager;
 use App\Repository\EventRepository;
+use App\Repository\ParticipationRepository;
 use App\Repository\ProgramRepository;
+use App\Repository\UserRepository;
+use App\Services\QrcodeService;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Endroid\QrCode\QrCode;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,10 +59,49 @@ class EventController extends AbstractController
     }
 
     #[Route('/listEvent', name: 'list_event')]
-    public function listEvent(EventRepository $eventRepository): Response
+    public function listEvent(EventRepository $eventRepository,Request $request): Response
     {
+        $filter = $request->query->get('filter');
+        $events = [];
+        if ($filter === 'available') {
+            $events = $eventRepository->findAvailableEvents();
+        } else {
+            $events = $eventRepository->findAll();
+        }
+
+        // Update the status of each event based on its start date
+        foreach ($events as $event) {
+            if ($event->getDateDebut() < new \DateTime()) {
+                // Update the status of the event
+                $event->setStatus('Terminé'); // Example status update, adjust as needed
+    
+                // Optionally, persist the changes to the database
+                // $entityManager->persist($event);
+            }
+            else{
+                $event->setStatus('Disponible');
+            }
+        }
+    
+        // Optionally, flush the changes to the database
+        // $entityManager->flush();
+    
+        // Fetch data from the database - number of participants in each event
+        $eventschart = $eventRepository->findTop10EventsByParticipants();
+    
+        // Prepare data for the chart
+        $labels = [];
+        $participantsCount = [];
+    
+        foreach ($eventschart as $event) {
+            $labels[] = $event->getNom();
+            $participantsCount[] = $event->getNbParticipants();
+        }
+    
         return $this->render('event/listEvent.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $events,
+            'labels' => json_encode($labels),
+            'participantsCount' => json_encode($participantsCount),
         ]);
     }
 
@@ -97,11 +144,91 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('list_event');
     }
+    
     #[Route('/clientEvent', name: 'client_event')]
-    public function clientPrograms(EventRepository $eventrepository): Response
+    public function clientPrograms( EntityManagerInterface $entityManager,UserRepository $userRepository): Response
     {
-        return $this->render('event/clientEvents.html.twig', [
-            'events' => $eventrepository->findAll(),
+        $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+    
+        // Check if user is logged in and get their subscriptions
+        $userParticipations = [];
+        if ($user) {
+            $userParticipations = $user->getParticipations()->toArray();
+        }
+    
+        
+        $participatedEventIds = [];
+        foreach ($userParticipations as $participation) {
+            $participatedEventIds[] = $participation->getEvent()->getId();
+        }
+    
+        $currentDate = new \DateTime();
+    
+    
+        $query = $entityManager->createQuery(
+            'SELECT e FROM App\Entity\Event e
+            WHERE e.nb_participants < e.nb_max AND e.date_debut > :currentDate'
+            )->setParameter('currentDate', $currentDate);
+
+            $events = $query->getResult();
+
+            return $this->render('event/clientEvents.html.twig', [
+                'events' => $events,
+                'participatedEventIds' => $participatedEventIds,
+            ]);
+    }
+
+    #[Route('/participer/{id}', name:"app_participation")]
+    public function participer($id, EventRepository $eventRepository, UserRepository $userRespository,ProgramManager $programManager): Response
+    {
+        
+        
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+        $event = $eventRepository->find($id);
+        if($event){ 
+            $user = $userRespository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+            $event->setNbParticipants($event->getNbParticipants()+1);
+            $programManager->create_participation($event,$user);
+            
+            return $this->redirectToRoute('participations');
+        }
+        return $this->redirectToRoute('client_event');
+        
+    }
+
+
+    #[Route('/participations', name:"participations")]
+    public function participations( UserRepository $userRespository): Response
+    {
+        $user = $userRespository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+        $participations = $user->getParticipations();
+        
+        return $this->render('event/participations.html.twig', [
+            'participations' => $participations,
+            
+        ]);
+        
+    }
+    #[Route('/statistics', name: 'statistics')]
+    public function stat(EventRepository $eventRepository): Response
+    {
+        // Fetch data from the database - number of participants in each event
+        $eventschart = $eventRepository->findTop10EventsByParticipants();
+
+        // Prepare data for the chart
+        $labels = [];
+        $participantsCount = [];
+
+        foreach ($eventschart as $event) {
+            $labels[] = $event->getNom();
+            $participantsCount[] = $event->getNbParticipants();
+        }
+
+        return $this->render('event/statistics.html.twig', [
+            'labels' => json_encode($labels),
+            'participantsCount' => json_encode($participantsCount),
         ]);
     }
 }

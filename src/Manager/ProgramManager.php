@@ -2,7 +2,9 @@
 
 namespace App\Manager;
 
+use App\Entity\Event;
 use App\Entity\Inscription;
+use App\Entity\Participation;
 use App\Entity\Program;
 use App\Entity\User;
 use App\Services\StripeService;
@@ -123,6 +125,26 @@ class ProgramManager
         $inscription->setUpdatedAt(new \Datetime());
         $inscription->setCreatedAt(new \Datetime());
         $this->em->persist($inscription);
+        $this->em->flush();
+    }
+
+    public function isUserSubscribed(Program $program, User $user): bool
+    {
+        $inscriptionRepository = $this->em->getRepository('App\Entity\Inscription');
+        $inscription = $inscriptionRepository->findOneBy(['program' => $program, 'user' => $user]);
+
+        return $inscription !== null;
+    }
+    /**
+     * @param Event $event
+     * @param User $user
+     */
+    public function create_participation(Event $event, User $user)
+    {
+        $participation = new Participation();
+        $participation->setUser($user);
+        $participation->setEvent($event);
+        $this->em->persist($participation);
         $this->em->flush();
     }
 }

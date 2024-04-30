@@ -97,7 +97,14 @@
                 </li>
                 <li><a class="nav-link scrollto" href="{{ path('client_program') }}">Programmes</a></li>
           <li><a class="nav-link scrollto" href="{{ path('client_event') }}">Evenements</a></li>
-          
+                
+          {% if app.user !=null %}
+      <li><a class="nav-link scrollto" href="{{ path('user_programs') }}">Mes Programmes</a></li>
+      <li><a class="nav-link scrollto" href="{{ path('participations') }}">Mes Evenements</a></li>
+{% else %}
+
+{% endif %}
+                    
             </ul>
         </div>
         <div class="profile">

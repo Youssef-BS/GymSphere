@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ {% block section %}
+           <section>
+   
+  </section>
+        {% endblock %}
+<div class="example-wrapper">
+    <h1 align="center"> Participation Pass</h1> <hr>
+
+    <div class="row">
+        <div class="col-md-6" align="center">
+            <h2 class="navbar-brand">{{event}}</h2>
+        </div>
+        <div class="col-md-6">
+            {% if qrCode %}
+                <img src="{{ qrCode }}" alt="qr-code" id="qr-code-image">
+                <br>
+                <div class="col-md-6" align="center">
+                       <br> <button class="btn btn-primary" onclick="printQRCode()">Print QR Code</button>
+                        <a href="{{ qrCode }}" download="qr-code.png" class="btn btn-success">Download QR Code</a>
+                    </div>
+                    <br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function printQRCode() {
+    var qrCodeImage = document.getElementById('qr-code-image');
+    if (qrCodeImage) {
+        var windowContent = '<!DOCTYPE html>';
+        windowContent += '<html>';
+        windowContent += '<head><title>{{event}}</title></head>';
+        windowContent += '<body>';
+        windowContent += '<img src="' + qrCodeImage.src + '" style="width:100%">';
+        windowContent += '</body>';
+        windowContent += '</html>';
+        var printWin = window.open('', '', 'width=800,height=600');
+        printWin.document.open();
+        printWin.document.write(windowContent);
+        printWin.document.close();
+        printWin.print();
+    } else {
+        console.error('QR code image element not found.');
+    }
+}
+
+    </script>
+{% endblock %}

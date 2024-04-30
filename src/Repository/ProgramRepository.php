@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Program;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -45,4 +46,15 @@ class ProgramRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function findByPartialName(string $partialName): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.nom LIKE :partialName')
+            ->andWhere('p.registration_deadline > :today')
+            ->setParameter('partialName', '%' . $partialName . '%')
+            ->setParameter('today', new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
 }

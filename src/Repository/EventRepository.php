@@ -45,4 +45,21 @@ class EventRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function findTop10EventsByParticipants()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.nb_participants', 'DESC')
+        ->setMaxResults(10)
+        ->getQuery()
+        ->getResult();
+}
+public function findAvailableEvents(): array
+    {
+         return $this->createQueryBuilder('e')
+            ->andWhere('e.startDate > :now')
+            ->setParameter('now', new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
 }
