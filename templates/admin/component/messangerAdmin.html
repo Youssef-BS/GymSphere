@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+</head>
+<body>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-box {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* max-height: 500px ; */
+    /* min-height: 500px ; */
+    overflow: scroll;
+}
+
+.messages {
+    padding: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.input-area {
+    display: flex;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.message-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.send-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+h1 {
+    text-align: center;
+}
+
+</style>
+<h1>Communtity</h1>
+    <div class="container">   
+        <div class="chat-box">
+            <div id="messages" class="messages"></div>
+            <div class="input-area">
+                <input type="text" id="message-input" class="message-input" placeholder="Enter your message">
+                <button id="send-button" class="send-button">Send</button>
+            </div>
+        </div>   
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const socket = io('http://localhost:5000'); 
+
+            function displayMessage(message) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                document.getElementById('messages').appendChild(messageElement);
+            }
+
+            socket.on('receive-message', function (message) { 
+                console.log('Received message:', message);
+                displayMessage(message);
+            });
+
+            document.getElementById('send-button').addEventListener('click', function () {
+                const message = document.getElementById('message-input').value;
+                if (message.trim() !== '') {
+                    socket.emit('send-message', message); 
+                    document.getElementById('message-input').value = '';
+                    displayMessage('You: ' + message); 
+                }
+            });
+
+            document.getElementById('message-input').addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    document.getElementById('send-button').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
