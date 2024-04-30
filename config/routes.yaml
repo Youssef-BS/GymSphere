@@ -10,11 +10,6 @@ add_reclamation_page:
     controller: 'App\Controller\ReclamationController::addReclamationPage'
 
     
-add_reclamation_form:
-    path: '/reclamation/add'
-    controller: 'App\Controller\ReclamationController::createReclamation'
-    methods: ['POST']
-
 
 
 reclamationDetails:

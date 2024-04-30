@@ -1,0 +1,44 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block body %}
+    <h1>Reclamation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>DateReclamation</th>
+                <th>Iduser</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.titre }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.iduser }}</td>
+                <td>
+                    <a href="{{ path('app_client_Response', {'id': reclamation.id , 'user_id' : user_id}) }}">See Response</a>
+<form method="post" action="{{ path('delete_reclamation_client', {'id': reclamation.id , 'user_id' : user_id }) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+    <button class="btn">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('add_reclamation_form' , {'user_id' : user_id}) }}">Create new</a>
+{% endblock %}

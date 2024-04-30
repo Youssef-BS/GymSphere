@@ -1,0 +1,14 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter une Réclamation</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.titre, {'label': 'Titre'}) }}
+    {{ form_row(form.type, {'label': 'Type'}) }}
+    {{ form_row(form.description, {'label': 'Description'}) }}
+    {{ form_row(form.dateReclamation, {'label': 'Date de Réclamation'}) }}
+
+    <button type="submit">Ajouter Réclamation</button>
+    {{ form_end(form) }}
+{% endblock %}

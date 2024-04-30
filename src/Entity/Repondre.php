@@ -96,7 +96,6 @@ public function setReclamation(?Reclamation $reclamation): self
      * @var int
      *
      * @ORM\Column(name="iduser", type="integer", nullable=false)
-     * @Assert\NotBlank(message="L'ID utilisateur ne peut pas être vide")
      */
     private $iduser;
 
@@ -104,7 +103,6 @@ public function setReclamation(?Reclamation $reclamation): self
      * @var int
      *
      * @ORM\Column(name="idreclamation", type="integer", nullable=false)
-     * @Assert\NotBlank(message="L'ID réclamation ne peut pas être vide")
      */
     private $idreclamation;
 

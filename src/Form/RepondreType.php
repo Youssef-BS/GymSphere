@@ -15,8 +15,7 @@ class RepondreType extends AbstractType
             ->add('titre')
             ->add('reponse')
             ->add('dateReponse')
-            ->add('iduser')
-            ->add('idreclamation')
+         
         ;
     }
 

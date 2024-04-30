@@ -11,13 +11,6 @@
         {{ form_label(form.dateReponse, 'Date de Réponse') }}
         {{ form_widget(form.dateReponse, {'attr': {'class': 'form-control'}}) }}
     </div>
-    <div class="form-group">
-        {{ form_label(form.iduser, 'ID Utilisateur') }}
-        {{ form_widget(form.iduser, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.idreclamation, 'ID Réclamation') }}
-        {{ form_widget(form.idreclamation, {'attr': {'class': 'form-control'}}) }}
-    </div>
+    
     <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

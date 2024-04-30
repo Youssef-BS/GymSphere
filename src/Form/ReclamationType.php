@@ -19,7 +19,6 @@ class ReclamationType extends AbstractType
             ->add('type')
             ->add('description')
             ->add('dateReclamation')
-            ->add('iduser')
         ;
     }
 
