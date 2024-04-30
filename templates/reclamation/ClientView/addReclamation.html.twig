@@ -1,14 +1,28 @@
 {% extends 'baseClient.html.twig' %}
 
 {% block body %}
-    <h1>Ajouter une Réclamation</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="mb-4">Ajouter une Réclamation</h1>
 
-    {{ form_start(form) }}
-    {{ form_row(form.titre, {'label': 'Titre'}) }}
-    {{ form_row(form.type, {'label': 'Type'}) }}
-    {{ form_row(form.description, {'label': 'Description'}) }}
-    {{ form_row(form.dateReclamation, {'label': 'Date de Réclamation'}) }}
-
-    <button type="submit">Ajouter Réclamation</button>
-    {{ form_end(form) }}
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                <div class="form-group">
+                    {{ form_row(form.titre, {'label': 'Titre', 'attr': {'class': 'form-control', 'placeholder': 'Entrez le titre'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.type, {'label': 'Type', 'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.description, {'label': 'Description', 'attr': {'class': 'form-control', 'rows': 4, 'placeholder': 'Entrez la description'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.dateReclamation, {'label': 'Date de Réclamation', 'attr': {'class': 'form-control'}}) }}
+                </div>
+             
+                <button type="submit" class="btn btn-primary">Ajouter Réclamation</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
