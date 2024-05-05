@@ -136,9 +136,23 @@
         .solde button:hover {
             background-color: #1EC230;
         }
+        .stats{
+            width:130px;
+            height:55px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .stats:hover{
+            background-color: #0056b3;
+            color: black;
+        }
 form {
     padding:20px; 
-  margin-left: 35%; 
+  margin-left: 45%; 
 }
 
 form input[type="text"] {
@@ -156,6 +170,7 @@ form input[type="text"]:hover {
 
 <button class="add"><a href="{{ path('add_produit')}}">Add Product</a></button>
 <button class="order"><a href="{{ path('app_commande')}}">Manage Orders</a></button>
+<button class="stats    "><a href="{{ path('app_statistics')}}">Stats</a></button>
 <form action="{{ path('app_admin') }}" method="get">
     <input type="text" name="q" placeholder="Search products...">
 </form>

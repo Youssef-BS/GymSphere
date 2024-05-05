@@ -9,7 +9,7 @@ use App\Entity\Produit;
 
 class StatisticsController extends AbstractController
 {
-    #[Route('/stats', name: 'app_statistics')]
+    #[Route('/statss', name: 'apps_statistics')]
     public function productStats(EntityManagerInterface $entityManager): Response
     {
         

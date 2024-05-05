@@ -8,10 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Intl\Locales;
-
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
-
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Form\UserChoiceType;
@@ -155,5 +154,23 @@ class ProduitController extends AbstractController
         $this->addFlash('success', 'The product has been offred');
         return $this->redirectToRoute('app_admin'); 
     }
+
+    #[Route('/stats', name: 'app_statistics')]
+    public function productStats(EntityManagerInterface $entityManager): Response
+    {
+        $query = $entityManager->createQuery(
+            'SELECT p.idProduit, COUNT(p.idProduit) AS occurrence
+            FROM App\Entity\Panier p
+            GROUP BY p.idProduit
+            ORDER BY occurrence DESC'
+        );
+        
+    $productsOccurrence = $query->getResult();
+
+        return $this->render('statistics/index.html.twig', [
+            'productsOccurrence' => $productsOccurrence,
+        ]);
+    }
+
 
 }   
