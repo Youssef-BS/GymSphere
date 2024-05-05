@@ -82,9 +82,9 @@ class RepondreController extends AbstractController
             // Try to send an SMS
             try {
                 $twilio->messages->create(
-                    "+21654828257", // Replace with the recipient's number
+                    "+21654828257", 
                     [
-                        "from" => "+12184504891", // Your Twilio number
+                        "from" => "+12184504891", 
                         "body" => "Votre réclamation a été traité avec succès."
                     ]
                 );
