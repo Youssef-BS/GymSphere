@@ -9,6 +9,7 @@
         "ext-iconv": "*",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         "doctrine/annotations": "^2.0",
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
@@ -53,6 +54,20 @@
         "phpstan/phpdoc-parser": "^1.28",
         "symfony/asset": "5.4.*",
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+        "doctrine/annotations": "*",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.19",
+        "endroid/qr-code": "^5.0",
+        "firebase/php-jwt": "^6.10",
+        "knplabs/knp-paginator-bundle": "^5.9",
+        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpoffice/phpspreadsheet": "^1.23",
+        "phpstan/phpdoc-parser": "^1.24",
+        "sensio/framework-extra-bundle": "^6.2",
+        "symfony/asset": "5.4.*",
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         "symfony/console": "5.4.*",
         "symfony/doctrine-messenger": "5.4.*",
         "symfony/dotenv": "5.4.*",
@@ -61,6 +76,7 @@
         "symfony/form": "5.4.*",
         "symfony/framework-bundle": "5.4.*",
         "symfony/http-client": "5.4.*",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -73,6 +89,11 @@
         "symfony/mailer": "5.4.*",
         "symfony/mercure-bundle": "^0.3.8",
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+        "symfony/http-foundation": "5.4.*",
+        "symfony/intl": "5.4.*",
+        "symfony/mailer": "5.4.*",
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         "symfony/mime": "5.4.*",
         "symfony/monolog-bundle": "^3.0",
         "symfony/notifier": "5.4.*",
@@ -82,6 +103,7 @@
         "symfony/runtime": "5.4.*",
         "symfony/security-bundle": "5.4.*",
         "symfony/serializer": "5.4.*",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         "symfony/stimulus-bundle": "^2.16",
@@ -114,12 +136,26 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+        "symfony/string": "5.4.*",
+        "symfony/translation": "5.4.*",
+        "symfony/twig-bundle": "5.4.*",
+        "symfony/ux-chartjs": "^2.17",
+        "symfony/validator": "5.4.*",
+        "symfony/web-link": "5.4.*",
+        "symfony/yaml": "5.4.*",
+        "tecnickcom/tcpdf": "^6.7",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0",
+        "twilio/sdk": "^8.0"
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "php-http/discovery": true,
             "symfony/flex": true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             "symfony/runtime": true,
@@ -131,6 +167,9 @@
             "symfony/runtime": true,
             "endroid/installer": true
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+            "symfony/runtime": true
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -143,6 +182,11 @@
             "App\\": "src/"
         }
     },
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
@@ -182,6 +226,7 @@
         "symfony/maker-bundle": "^1.0",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "symfony/phpunit-bridge": "^7.0",
 =======
         "symfony/phpunit-bridge": "^6.3",
@@ -192,4 +237,16 @@
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"
     }
+=======
+        "symfony/phpunit-bridge": "^6.3",
+        "symfony/stopwatch": "5.4.*",
+        "symfony/web-profiler-bundle": "5.4.*"
+    }
+
+    
+    
+      
+    
+    
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 }

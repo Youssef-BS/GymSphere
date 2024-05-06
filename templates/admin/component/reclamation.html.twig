@@ -1,20 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
    <style>
+=======
+<meta charset="UTF-8">
+    <title>Statistiques des Réclamations</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('chartjs') }}
+    {% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <style>
+/* Styles for the pagination */
+.pagination .next.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #f8f9fa; /* Change background color for disabled state */
+    color: #333; /* Change text color for disabled state */
+    border-color: #ccc; /* Change border color for disabled state */
+}
+
+.pagination .disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #f8f9fa; /* Change background color for disabled state */
+    color: #333; /* Change text color for disabled state */
+    border-color: #ccc; /* Change border color for disabled state */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin: 0 2px; /* Adjust margin as needed */
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+/* Styles for the navigation arrows */
+.pagination .prev,
+.pagination .next {
+    display: flex;
+    align-items: center;
+}
+
+.pagination .prev a,
+.pagination .next a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin: 0 2px; /* Adjust margin as needed */
+}
+
+.pagination .prev a:hover,
+.pagination .next a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+
+
+
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
         }
+<<<<<<< HEAD
 
+=======
+    .export-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .export-button:hover {
+            background-color: #218838;
+        }
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
+<<<<<<< HEAD
             margin-left : 250px;
+=======
+            margin-left: 250px;
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         }
 
         .user-container {
@@ -65,6 +173,7 @@
         .consulter button:hover {
             background-color: #0056b3;
         }
+<<<<<<< HEAD
     </style>
 </head>
 <body>
@@ -86,5 +195,378 @@
     
    
 </div>
+=======
+
+.stat {
+    width : 100%;
+    height : 300px;
+}
+        canvas#pieChart {
+            margin: auto;
+            display: block; 
+            width: 300px;
+            height: 300px;
+        }
+
+
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.user-container img.qr-code {
+    border-radius: 0;  
+    width: 100px;       
+    height: 100px;      
+    object-fit: contain;
+    margin: 0 auto;    
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher...">
+    <button id="searchButton">Rechercher</button>
+</div>
+
+
+
+
+    {% include 'admin/component/sideBar.html.twig' %}
+    <div class="container"> 
+        {% set types = {} %}
+        {% for reclamation in reclamations %}
+            {% if types[reclamation.type] is not defined %}
+                {% set types = types|merge({ (reclamation.type): 1 }) %}
+            {% else %}
+                {% set types = types|merge({ (reclamation.type): types[reclamation.type] + 1 }) %}
+            {% endif %}
+        {% endfor %}
+
+
+  
+
+
+
+        <!-- Boucle pour afficher les réclamations -->
+        {% for reclamation in reclamations %}
+            <div class="user-container">
+
+             
+                <!-- Affichage des données de réclamation -->
+                <h2>{{ reclamation.titre }}</h2>
+                <p>Type: {{ reclamation.type }}</p>
+                <p>Description: {{ reclamation.description }}</p>
+                <p>Date: {{ reclamation.dateReclamation|date('Y-m-d') }}</p>
+
+            
+
+
+                <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+                <div class="user-info"></div>
+                
+                <!-- Boutons pour les actions -->
+                <div class="consulter">
+                    <button><a href="{{ path('edit_reclamation', {'id': reclamation.id}) }}">consulter</a></button>
+                    <button><a href="{{ path('delete_reclamation', {'id': reclamation.id}) }}">delete</a></button>
+                    <button><a href="{{ path('app_repondre_index', {'id': reclamation.id}) }}">Show</a></button>
+                    <button><a href="{{ path('app_repondre_new' , {'id': reclamation.id , 'user_id': reclamation.getIduser()} )}}">repondre</a></button>
+                     <form action="{{ path('generate_pdf', { 'reclamationId': reclamation.id }) }}" method="post" target="_blank">
+                    <button class="export-button"><a href="{{ path('export_reclamations_excel') }}">Exporter en Excel</a></button>
+                    <form action="{{ path('generate_pdf', { 'reclamationId': reclamation.id }) }}" method="post" target="_blank">
+                        <button type="submit">Télécharger en PDF</button>
+                    </form>
+                    <!-- Display QR Code -->
+               <img src="{{ qrCodes[reclamation.id] }}" alt="QR Code for Reclamation" class="qr-code">
+                </div>
+            </div>
+        {% endfor %}
+    
+        <div id="noResultsMessage" style="display: none; text-align: center; padding: 10px; background-color: #f8d7da; color: #721c24; border-radius: 5px; margin-top: 10px;">
+    Aucun résultat trouvé.
+</div>
+
+
+{# 
+<!-- Boucle pour afficher les réclamations paginées -->
+{% for reclamation in pagination %}
+    <div class="user-container">
+        <!-- Affichage des données de réclamation -->
+        <h2>{{ reclamation.titre }}</h2>
+        <p>Type: {{ reclamation.type }}</p>
+        <p>Description: {{ reclamation.description }}</p>
+        <p>Date: {{ reclamation.dateReclamation|date('Y-m-d') }}</p>
+        <!-- Autres éléments de réclamation à afficher -->
+    </div>
+{% endfor %} #}
+
+
+<!-- Afficher la pagination -->
+{# {{ knp_pagination_render(pagination) }} #}
+
+
+
+<div class="container py-5">
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Pagination" class="pagination">
+            {{ knp_pagination_render(reclamations) }}
+        </nav>
+    </div>
+</div>
+
+{% if pagination.previous is defined %}
+    <a href="{{ pagination.first }}" class="prev">&laquo; Previous </a>
+{% else %}
+    <span class="disabled prev">&laquo; Previous </span>
+{% endif %}
+
+&nbsp;&nbsp;&nbsp; <!-- Add non-breaking spaces for space -->
+
+{% if pagination.next is defined %}
+    <a href="{{ pagination.last }}" class="next">Next &raquo;</a>
+{% else %}
+    <span class="disabled next">Next &raquo;</span>
+{% endif %}
+
+
+
+
+
+
+      
+<canvas id="typeStatsChart" width="300" height="200"></canvas>
+
+<script>
+    var typesStats = {{ typesStats | json_encode | raw }};
+    var ctx = document.getElementById('typeStatsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(typesStats),
+            datasets: [{
+                label: 'Nombre de réclamations par type',
+                data: Object.values(typesStats),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+{# <div id="chat-container">
+    <div id="chat-box">
+        <!-- Messages will appear here -->
+    </div>
+    <input type="text" id="chat-input" placeholder="Type your message here..." />
+    <button id="chat-send">Send</button>
+</div> #}
+<script>
+    document.getElementById('chat-send').onclick = function() {
+        var input = document.getElementById('chat-input');
+        var message = input.value.trim();
+        var chatBox = document.getElementById('chat-box');
+
+        if (message) {
+            // Append user's message to the chatbox
+            chatBox.innerHTML += '<div class="chat-message user-message">' + message + '</div>';
+
+            // Send the message to the Symfony backend
+            fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    // Add any other headers here
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Ensure that 'reply' key exists in the data
+                if (data && data.reply) {
+                    chatBox.innerHTML += '<div class="chat-message bot-message">' + data.reply + '</div>';
+                } else {
+                    chatBox.innerHTML += '<div class="chat-message bot-message">Sorry, I cannot process your message at this time.</div>';
+                }
+                // Clear the input and scroll the chatbox to the bottom
+                input.value = '';
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                chatBox.innerHTML += '<div class="chat-message bot-message">There was an error processing your request.</div>';
+            });
+        }
+    };
+</script>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const reclamationTitles = document.querySelectorAll('.user-container h2');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+
+    // Fonction pour filtrer les réclamations en fonction de la recherche
+    function filterReclamations() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        let foundResults = false;
+
+        reclamationTitles.forEach(function (title) {
+            const reclamationTitle = title.textContent.toLowerCase();
+
+            if (reclamationTitle.includes(searchTerm)) {
+                title.parentNode.style.display = 'block';
+                foundResults = true;
+            } else {
+                title.parentNode.style.display = 'none';
+            }
+        });
+
+
+       
+
+        // Afficher le message "Aucun résultat trouvé" si aucun résultat n'a été trouvé
+        if (!foundResults) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    }
+
+    // Écouter l'événement de saisie dans la barre de recherche
+    searchInput.addEventListener('input', filterReclamations);
+
+    // Écouter l'événement du clic sur le bouton de recherche (optionnel)
+    searchButton.addEventListener('click', filterReclamations);
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 </body>
 </html>

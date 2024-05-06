@@ -107,6 +107,7 @@ select.editField {
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
 <div class="userDetails">
+<<<<<<< HEAD
   <div class="user-container">
     <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
     <div class="user-info">
@@ -143,4 +144,47 @@ select.editField {
 </div>
 
     </div>
+=======
+    <div class="user-container">
+        <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+        <div class="user-info">
+            <p>ID de la réclamation</p>
+            <p>{{ reclamation.id }}</p>
+            <p>Titre</p>
+            <p>{{ reclamation.titre }}</p>
+           
+            <p>Description</p>
+            <p>{{ reclamation.description }}</p>
+            <p>Type</p>
+            <p>{{ reclamation.type }}</p>
+            <p>Date de réclamation</p>
+            <p>{{ reclamation.dateReclamation|date('Y-m-d') }}</p>
+        </div>
+        <div class="consulter">
+            <button>Éditer</button>
+        </div>
+    </div>
+    <div class="editInput">
+        <form action="{{ path('edit_reclamation', {'id': reclamation.id}) }}" method="POST">
+            <label for="titre" class="fileInputLabel">Titre:</label>
+            <input type="text" id="titre" name="titre" class="editField" value="{{ reclamation.titre }}" />
+
+
+            <label for="description" class="fileInputLabel">Description:</label>
+            <input type="text" id="description" name="description" class="editField" value="{{ reclamation.description }}" />
+
+            <label for="type" class="fileInputLabel">Type:</label>
+            <select id="type" name="type" class="editField">
+                <option value="urgent" {% if reclamation.type == 'urgent' %} selected {% endif %}>Urgent</option>
+                <option value="normal" {% if reclamation.type == 'normal' %} selected {% endif %}>Normal</option>
+            </select>
+
+            <label for="dateReclamation" class="fileInputLabel">Date de réclamation:</label>
+            <input type="date" id="dateReclamation" name="dateReclamation" class="editField" value="{{ reclamation.dateReclamation|date('Y-m-d') }}" />
+
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+</div>
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 </body>

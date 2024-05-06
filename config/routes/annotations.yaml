@@ -6,6 +6,7 @@ kernel:
     resource: ../../src/Kernel.php
     type: annotation
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 dashboard:
@@ -39,3 +40,5 @@ logout:
     
 
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875

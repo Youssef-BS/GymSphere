@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request ;
 use Doctrine\Persistence\ManagerRegistry;
+<<<<<<< HEAD
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Firebase\JWT\JWT;
@@ -25,6 +26,13 @@ class AuthentificationController extends AbstractController
     }
 
 
+=======
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Firebase\JWT\JWT;
+class AuthentificationController extends AbstractController
+{
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     #[Route('/register', name: 'register')]
     public function register(Request $request, ManagerRegistry $managerRegistry): Response
     {
@@ -36,6 +44,7 @@ class AuthentificationController extends AbstractController
         $age = $request->request->get('age');
         $phoneNumber = $request->request->get('phoneNumber');
         $password = $request->request->get('password');
+<<<<<<< HEAD
         $imageFile = $request->files->get('image');
 
 
@@ -53,13 +62,20 @@ class AuthentificationController extends AbstractController
 
             $user->setPhotoProfile($fileName);
         }
+=======
+        $user = new User();
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         $user->setNom($username);
         $user->setPrenom($lastName);
         $user->setEmail($email);
         $user->setAge($age);
         $user->setPhoneNumber($phoneNumber);
+<<<<<<< HEAD
         $encodedPassword = $this->passwordEncoder->encodePassword($user, $password);
         $user->setPassword($encodedPassword);
+=======
+        $user->setPassword($password);
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         $entityManager->persist($user);
         $entityManager->flush();
         return $this->redirectToRoute('login');
@@ -87,7 +103,10 @@ class AuthentificationController extends AbstractController
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
+<<<<<<< HEAD
     
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
         if ($this->isValidCredentials($email, $password)) {
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
             $payload = [
@@ -103,8 +122,11 @@ class AuthentificationController extends AbstractController
             return $this->redirectToRoute('login', ['error' => 'Password or Email is incorrect !']);
         }
     }
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 
 
     #[Route('/dashboard', name: 'dashboard')]
@@ -164,6 +186,7 @@ class AuthentificationController extends AbstractController
     private function isValidCredentials(string $email, string $password): bool
     {
         $userRepository = $this->getDoctrine()->getRepository(User::class);
+<<<<<<< HEAD
         $user = $userRepository->findOneBy(['email' => $email]);
     
         if (!$user) {
@@ -172,6 +195,10 @@ class AuthentificationController extends AbstractController
     
         $passwordEncoder = $this->passwordEncoder;
         return $passwordEncoder->isPasswordValid($user, $password);
+=======
+        $validUser = $userRepository->findOneBy(['email' => $email, 'password' => $password]);
+        return $validUser !== null;
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     }
     
 }

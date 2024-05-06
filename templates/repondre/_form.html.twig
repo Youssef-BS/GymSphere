@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr': {'class': 'mt-4 mb-4'}}) }}
+    <div class="form-group">
+        {{ form_label(form.titre, 'Titre') }}
+        {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.reponse, 'Réponse') }}
+        {{ form_widget(form.reponse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.dateReponse, 'Date de Réponse') }}
+        {{ form_widget(form.dateReponse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

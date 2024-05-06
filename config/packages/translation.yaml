@@ -1,13 +1,19 @@
 framework:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     default_locale: en
     translator:
         default_path: '%kernel.project_dir%/translations'
         fallbacks:
             - en
 <<<<<<< HEAD
+<<<<<<< HEAD
         providers:
 =======
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 #        providers:
 #            crowdin:
 #                dsn: '%env(CROWDIN_DSN)%'
@@ -15,8 +21,11 @@ framework:
 #                dsn: '%env(LOCO_DSN)%'
 #            lokalise:
 #                dsn: '%env(LOKALISE_DSN)%'
+<<<<<<< HEAD
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
 =======
     translator:
         enabled: false
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875

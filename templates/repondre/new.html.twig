@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Repondre{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h1 class="text-center">Create new Repondre</h1>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                        <div class="form-group">
+                            {{ form_label(form.titre, 'Titre') }}
+                            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.reponse, 'Réponse') }}
+                            {{ form_widget(form.reponse, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.dateReponse, 'Date de Réponse') }}
+                            {{ form_widget(form.dateReponse, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                     
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{{ path('reclamation' , {'user_id' : user_id}) }}" class="btn btn-info ml-2">Back to list</a>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

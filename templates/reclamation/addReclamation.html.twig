@@ -1,0 +1,75 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Ajouter Réclamation{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h3 style="color: white;">Ajouter Réclamation</h3>
+        <form id="reclamation-form" action="" method="POST">
+            <div class="mb-3">
+                <label for="titre" class="form-label" style="color: white;">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+            </div>
+          
+            <div class="mb-3">
+                <label for="description" class="form-label" style="color: white;">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label" style="color: white;">Type</label>
+                <select class="form-select" id="type" name="type">
+                    <option value="Complaint">Complaint</option>
+                    <option value="Suggestion">Suggestion</option>
+                    <option value="Feedback">Feedback</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="dateReclamation" class="form-label" style="color: white;">Date</label>
+                <input type="date" class="form-control" id="dateReclamation" name="dateReclamation">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div id="message-container"></div> <!-- Zone de message -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('reclamation-form');
+            const messageContainer = document.getElementById('message-container');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Empêcher la soumission normale du formulaire
+
+                // Récupérer les données du formulaire
+                const formData = new FormData(form);
+
+                // Envoyer les données via AJAX
+                fetch(form.getAttribute('action'), {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Afficher les messages de succès ou d'erreur dans la zone de message
+                    const message = document.createElement('div');
+                    message.className = data.type === 'success' ? 'alert alert-success' : 'alert alert-danger';
+                    message.textContent = data.message;
+
+                    messageContainer.innerHTML = ''; // Effacer les anciens messages
+                    messageContainer.appendChild(message);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+
+                    // Afficher un message d'erreur en cas de problème
+                    const message = document.createElement('div');
+                    message.className = 'alert alert-danger';
+                    message.textContent = 'Une erreur s\'est produite lors de la soumission du formulaire. Veuillez réessayer.';
+
+                    messageContainer.innerHTML = ''; // Effacer les anciens messages
+                    messageContainer.appendChild(message);
+                });
+            });
+        });
+    </script>
+{% endblock %}

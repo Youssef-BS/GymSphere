@@ -1,0 +1,44 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block title %}Répondre{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-4 mb-4">Répondre</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Réponse</th>
+                            <th scope="col">Date de Réponse</th>
+                            <th scope="col">Id Utilisateur</th>
+                            <th scope="col">Id Réclamation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for repondre in repondres %}
+                            <tr>
+                                <td>{{ repondre.id }}</td>
+                                <td>{{ repondre.titre }}</td>
+                                <td>{{ repondre.reponse }}</td>
+                                <td>{{ repondre.dateReponse ? repondre.dateReponse|date('d/m/Y') : '' }}</td>
+                                <td>{{ repondre.iduser }}</td>
+                                <td>{{ repondre.idreclamation }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">Aucun enregistrement trouvé</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    <a href="{{ path('front_reclamation' , {'user_id' : user_id}) }}" class="btn btn-secondary mt-3">Back to list</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

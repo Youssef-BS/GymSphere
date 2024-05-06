@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
@@ -33,3 +34,44 @@ home_page_fr:
     defaults:
         _locale: fr
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+reclamation:
+  resource: App\Controller\ReclamationController
+  type: annotation
+
+add_reclamation_page:
+    path: '/addReclamationPage'
+    controller: 'App\Controller\ReclamationController::addReclamationPage'
+
+    
+
+
+reclamationDetails:
+    path: /reclamation/{id}/details
+    controller: App\Controller\ReclamationController::reclamationDetails
+    requirements:
+        id: '\d+'
+
+
+reclamation_details:
+    path: /reclamation/{id}
+    controller: App\Controller\ReclamationController::reclamationDetails
+
+
+repondre:
+    resource: 'App\Controller\RepondreController'
+    type:     annotation
+
+
+generate_pdf:
+    path: /generate-pdf/{reclamationId}
+    controller: App\Controller\ReclamationController::generatePdf
+    methods: ['POST']
+
+export_reclamations_excel:
+    path: /reclamation/export/excel
+    controller: App\Controller\ReclamationController::exportReclamationsExcel
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875

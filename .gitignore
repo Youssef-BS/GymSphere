@@ -20,6 +20,7 @@
 ###< symfony/phpunit-bridge ###
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 ###> symfony/webpack-encore-bundle ###
@@ -31,3 +32,5 @@ yarn-error.log
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
 =======
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875

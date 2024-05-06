@@ -6,6 +6,7 @@
 parameters:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     photo_directory: '%kernel.project_dir%/public/uploads/photos'
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
@@ -17,10 +18,18 @@ services:
 services:
     
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+    photo_directory: '%kernel.project_dir%/public/uploads/photos'
+    env(TWILIO_SID): '%env(TWILIO_SID)%'
+    env(TWILIO_TOKEN): '%env(TWILIO_TOKEN)%'
+
+services:
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -28,6 +37,13 @@ services:
         arguments: ['@translator.default']
         tags: [twig.extension]
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+      
+# config/services.yaml
+
+
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -36,6 +52,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         
@@ -47,3 +64,10 @@ services:
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+=======
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+
+>>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
