@@ -5,3 +5,37 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+<<<<<<< HEAD
+=======
+
+dashboard:
+    path: /dashboard
+    controller: App\Controller\ProduitController::index
+
+analystic:
+    path: /analystic
+    controller: App\Controller\ProduitController::index
+users:
+    path: /users
+    controller: App\Controller\ProduitController::index
+programs:
+    path: /programs
+    controller: App\Controller\ProduitController::index
+produts:
+    path: /produts
+    controller: App\Controller\ProduitController::indexc
+productDetails:
+    path: productDetails
+    controller: App\Controller\ProduitController::indexproduit
+gyms:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+reclamation:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+logout:
+    path: /gyms
+    controller: App\Controller\ProduitController::index
+    
+
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

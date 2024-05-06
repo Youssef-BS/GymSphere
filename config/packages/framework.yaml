@@ -1,5 +1,12 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
+<<<<<<< HEAD
+=======
+
+    
+
+
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
     http_method_override: false
@@ -22,3 +29,8 @@ when@test:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

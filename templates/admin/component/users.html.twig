@@ -11,7 +11,10 @@
 
         .container-wrapper {
             margin-left: 250px; /* Adjust as needed */
+<<<<<<< HEAD
             margin-top: 50px; /* Adjust as needed */
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
         }
 
         .container {
@@ -30,6 +33,10 @@
             width: 280px;
             text-align: center;
             transition: transform 0.3s ease;
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
         }
 
         .user-container:hover {
@@ -86,6 +93,7 @@
         button:hover {
             background-color: #0056b3;
         }
+<<<<<<< HEAD
         .consulter-user {
             position: absolute;
             right: 4%;
@@ -163,10 +171,13 @@
         h2{
             text-align : center;
         }
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     </style>
 </head>
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
+<<<<<<< HEAD
  <div class="consulter-user">
     <a href="{{ path('addUserPage') }}">Add User</a>
  </div>
@@ -239,5 +250,25 @@
         });
     });
  </script>
+=======
+<div class="container-wrapper">
+    <div class="container"> 
+        {% for user in users %}
+        <div class="user-container">
+            <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
+            <div class="user-info">
+                <h1>{{ user.nom }}</h1>
+                <p>{{ user.isAdmin ? 'Admin' : 'User' }}</p>
+            </div>
+            <div class="consulter">
+                <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
+                <button>edit</button>
+                <button>delete</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 </body>
 </html>

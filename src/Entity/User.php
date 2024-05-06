@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -50,12 +51,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
 =======
 use Symfony\Component\Security\Core\User\UserInterface;
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+<<<<<<< HEAD
 class User implements UserInterface
+=======
+class User
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -89,9 +96,12 @@ class User implements UserInterface
     #[ORM\Column(name: 'photoProfile', length: 255)]
     private ?string $photoProfile = null;
 
+<<<<<<< HEAD
     #[ORM\Column(length: 255)]
     private ?string $otp = null;
 
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     public function getIdUser(): ?int
     {
         return $this->idUser;
@@ -138,7 +148,10 @@ class User implements UserInterface
         $this->age = $age;
 
         return $this;
+<<<<<<< HEAD
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     }
 
     public function getEmail(): ?string
@@ -152,6 +165,7 @@ class User implements UserInterface
 
         return $this;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     
@@ -217,6 +231,10 @@ class User implements UserInterface
 
     public function getPassword(): ?string
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+
+    public function getPassword(): ?string
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     {
         return $this->password;
     }
@@ -228,6 +246,7 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     /**
      * Returning a salt is only needed, if you are not using a modern
@@ -308,6 +327,8 @@ class User implements UserInterface
 
         return $this;
 =======
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
@@ -352,6 +373,7 @@ class User implements UserInterface
     public function setPhotoProfile(string $photoProfile): static
     {
         $this->photoProfile = $photoProfile;
+<<<<<<< HEAD
     
         return $this;
     }
@@ -393,3 +415,9 @@ class User implements UserInterface
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
     }
 }
+=======
+
+        return $this;
+    }
+}
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

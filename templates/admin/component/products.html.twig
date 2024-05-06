@@ -23,7 +23,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px;
             padding: 20px;
+<<<<<<< HEAD
             width: 280px;
+=======
+            width: 260px;
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -33,9 +37,15 @@
         }
 
         .user-container img {
+<<<<<<< HEAD
             border-radius: 50%;
             width: 150px;
             height: 150px;
+=======
+            border-radius: 5%;
+            width: 200px;
+            height: 200px;
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
             object-fit: cover;
             margin-bottom: 20px;
         }
@@ -53,8 +63,14 @@
 
         .consulter button {
             background-color: #007bff;
+<<<<<<< HEAD
             color: #fff;
             border: none;
+=======
+            color: #eee;
+            border: none;
+            width:80px;
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
             border-radius: 4px;
             padding: 8px 16px;
             margin: 5px;
@@ -65,6 +81,7 @@
         .consulter button:hover {
             background-color: #0056b3;
         }
+<<<<<<< HEAD
     </style>
 </head>
 <body>
@@ -122,3 +139,163 @@
 </div>
 </body>
 </html>
+=======
+        .del button {
+            background-color: #FF0000;
+            color: black;
+            border: none;
+            width:80px;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .del button:hover {
+            background-color: #C20000;
+        }
+
+
+.container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-left : 250px;
+        }
+        .add{
+            padding: 20px;
+            margin-left : 250px;
+            margin-top : 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+        .add:hover {
+            background-color: #0056b3;
+            color: black;
+        }
+        .order{
+            padding: 20px;
+            margin-top : 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .order:hover{
+            background-color: #0056b3;
+            color: black;
+        }
+        .solde button {
+            background-color: #3EFF00;
+            color: #eee;
+            border: none;
+            border-radius: 50%;
+            width:40px;
+            height:40px;
+            padding: 4px 4px;
+            margin: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .solde button:hover {
+            background-color: #1EC230;
+        }
+        .stats{
+            width:130px;
+            height:55px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .stats:hover{
+            background-color: #0056b3;
+            color: black;
+        }
+form {
+    padding:20px; 
+  margin-left: 45%; 
+}
+
+form input[type="text"] {
+  width: 300px; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 16px; 
+}
+form input[type="text"]:hover {
+  background-color: #E7E7E7; 
+}
+    </style>
+</head>
+
+<button class="add"><a href="{{ path('add_produit')}}">Add Product</a></button>
+<button class="order"><a href="{{ path('app_commande')}}">Manage Orders</a></button>
+<button class="stats    "><a href="{{ path('app_statistics')}}">Stats</a></button>
+<form action="{{ path('app_admin') }}" method="get">
+    <input type="text" name="q" placeholder="Search products...">
+</form>
+
+<body>
+{% include 'admin/component/sideBar.html.twig' %}
+{% for message in app.flashes('success') %}
+				<div style="color: green;
+																			                                    border: 2px green solid;
+																			                                    text-align: center;
+																			                                    padding: 5px;margin-bottom: 10px;">
+					{{ message }}
+				</div>
+        
+			{% endfor %}
+<div class="container"> <!-- Corrected class name to "container" -->
+    {% for product in b %}
+    <div class="user-container">
+        <img src="{{product.photoProduit}}" alt="" />
+        <div class="user-info">
+            <p>ID: {{ product.idProduit}}</p>
+            <h1>{{ product.nomProduit }}</h1>
+            
+            <p>Price: {{ product.prixProduit}}</p>
+            <p>Quantity: {{ product.quantiteProduit}}</p>
+            
+        </div>
+        <div class="consulter">
+            <button><a href="{{ path('up_produit', {'idProduit': product.idProduit}) }}">edit</a></button>
+            </div>
+            <div class="del">
+            <button><a href="{{ path('del_produit', {'idProduit': product.idProduit}) }}">delete</a></button>
+        </div>
+        <div class="solde">
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 10 }) }}">10%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 20 }) }}">20%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 30 }) }}">30%</a></button>
+        <button><a href="{{ path('change_price', {'idProduit': product.idProduit, 'discount': 50 }) }}">50%</a></button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+ <script>
+const searchInput = document.querySelector('input[name="q"]');
+        
+        searchInput.addEventListener('input', function() {
+            this.form.submit();
+        });
+
+</script>
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

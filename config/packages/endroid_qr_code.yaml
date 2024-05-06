@@ -6,4 +6,8 @@ endroid_qr_code:
         encoding: 'UTF-8'
         errorCorrectionLevel: 'low'
         roundBlockSizeMode: 'margin'
+<<<<<<< HEAD
         validateResult: false
+=======
+        validateResult: false
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

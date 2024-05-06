@@ -16,13 +16,19 @@ framework:
             # sync: 'sync://'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
         default_bus: messenger.bus.default
 
         buses:
             messenger.bus.default: []
 
+<<<<<<< HEAD
 =======
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
         routing:
             Symfony\Component\Mailer\Messenger\SendEmailMessage: async
             Symfony\Component\Notifier\Message\ChatMessage: async

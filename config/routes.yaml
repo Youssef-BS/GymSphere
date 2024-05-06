@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
@@ -8,3 +9,27 @@ chat:
     path: /chat
     controller: App\Controller\ChatController::index
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+root_route_redirect:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        path: /en
+        permanent: true
+
+home_page_en:
+    path: Home/en
+    controller: App\Controller\PanierController::index
+    defaults:
+        _locale: en
+
+home_page_fr:
+    path: Home/fr
+    controller: App\Controller\PanierController::index
+    defaults:
+        _locale: fr
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4

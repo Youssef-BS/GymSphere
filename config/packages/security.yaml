@@ -6,6 +6,7 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
 <<<<<<< HEAD
+<<<<<<< HEAD
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
@@ -14,12 +15,16 @@ security:
 =======
         users_in_memory: { memory: null }
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+        users_in_memory: { memory: null }
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
+<<<<<<< HEAD
 <<<<<<< HEAD
             provider: app_user_provider
             custom_authenticator: App\Security\LoginFormAuthenticator
@@ -42,6 +47,10 @@ security:
             algorithm: bcrypt
             
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+            provider: users_in_memory
+
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 

@@ -60,6 +60,10 @@ when@prod:
                 channels: [deprecation]
                 path: php://stderr
 <<<<<<< HEAD
+<<<<<<< HEAD
                 formatter: monolog.formatter.json
 =======
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
+=======
+                formatter: monolog.formatter.json
+>>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
