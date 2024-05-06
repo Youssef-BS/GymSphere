@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<style>
+.sidebar {
+  flex: 1;
+  height: 100vh;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+
+}
+
+.sidebarWrapper {
+  padding: 18px;
+  color: #555;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarListItem {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebarIcon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.sidebarTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebarWrapper">
+      <div class="sidebarMenu">
+        <h3 class="sidebarTitle">Dashboard</h3>
+        <ul class="sidebarList">
+          <li class="sidebarListItem active">
+            <span class="material-icons sidebarIcon">home</span>
+            <a href="{{ path('dashboard') }}">Home</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">show_chart</span>
+            <a href="{{ path('analystic') }}">Analytics</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">trending_up</span>
+            <a href="{{ path('abonnement_index') }}" >Sales</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebarMenu">
+        <h3 class="sidebarTitle">Quick Menu</h3>
+        <ul class="sidebarList">
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">group</span>
+            <a href="{{ path('users') }}">Users</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">sports</span>
+            Coachs
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">sports</span>
+            <a href="{{ path('programs') }}">Programs</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">production_quantity_limits</span>
+            <a href="{{ path('products') }}">Products</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">fitness_center</span>
+            <a href="{{ path('gyms') }}">Gyms</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">attach_money</span>
+            Transactions
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">report</span>
+            <a href="{{ path('reclamation') }}">Reclamations</a>
+          </li>
+          <li class="sidebarListItem">
+            <span class="material-icons sidebarIcon">chat_bubble</span>
+            <a href="http://localhost:3000">Messages</a>
+          </li>
+        </ul>
+      </div>
+      <ul class="sidebarList">
+        <li class="sidebarListItem">
+          <span class="material-icons sidebarIcon">logout</span>
+          <a href="{{ path('logout') }}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="card-title mb-4">Abonnement Details</h1>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">{{ abonnement.idAbonnement }}</dd>
+
+                        <dt class="col-sm-4">Date Début</dt>
+                        <dd class="col-sm-8">{{ abonnement.dateDebut|date('Y-m-d') }}</dd>
+
+                        <dt class="col-sm-4">Date Fin</dt>
+                        <dd class="col-sm-8">{{ abonnement.dateFin|date('Y-m-d') }}</dd>
+
+                        <dt class="col-sm-4">Prix</dt>
+                        <dd class="col-sm-8">{{ abonnement.prix }}</dd>
+
+                        <dt class="col-sm-4">Payment</dt>
+                        <dd class="col-sm-8">{{ abonnement.payment ? 'Paid' : 'Not Paid' }}</dd>
+
+                        <dt class="col-sm-4">ID User</dt>
+                        <dd class="col-sm-8">{{ abonnement.idUser }}</dd>
+                    </dl>
+                </div>
+            </div>
+
+            {# Add buttons or links for editing or deleting the Abonnement #}
+            <div class="mt-4 text-center">
+                {# <a href="{{ path('abonnement_edit', {'id': abonnement.idAbonnement}) }}" class="btn btn-primary">Edit</a> #}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

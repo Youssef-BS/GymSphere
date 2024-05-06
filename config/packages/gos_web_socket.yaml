@@ -1,0 +1,5 @@
+gos_web_socket:
+    server:
+        port: 3000 
+        host: 0.0.0.0 
+        origin_check: false 

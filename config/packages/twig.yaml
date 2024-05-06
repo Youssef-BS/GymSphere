@@ -1,5 +1,6 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+<<<<<<< HEAD
     form_themes: ['bootstrap_5_layout.html.twig']
     globals:
         app_environement: '%env(APP_ENV)%'
@@ -8,3 +9,9 @@ when@test:
     twig:
         strict_variables: true
     
+=======
+
+when@test:
+    twig:
+        strict_variables: true
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f

@@ -15,11 +15,14 @@ framework:
             failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
+<<<<<<< HEAD
         default_bus: messenger.bus.default
 
         buses:
             messenger.bus.default: []
 
+=======
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
         routing:
             Symfony\Component\Mailer\Messenger\SendEmailMessage: async
             Symfony\Component\Notifier\Message\ChatMessage: async

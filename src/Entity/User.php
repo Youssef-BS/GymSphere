@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+<<<<<<< HEAD
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -47,6 +48,97 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+=======
+use Symfony\Component\Security\Core\User\UserInterface;
+
+use App\Repository\UserRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class User implements UserInterface
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: 'idUser', type: 'integer')]
+    private ?int $idUser = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $prenom = null;
+
+    #[ORM\Column(type: 'integer')]
+    private ?int $age = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
+    #[ORM\Column(name: 'phoneNumber', length: 255)]
+    private ?string $phoneNumber = null;
+
+    #[ORM\Column(type: 'integer', name: 'isAdmin')]
+    private ?int $isAdmin = null;
+
+    #[ORM\Column(type: 'integer', name: 'isCoach')]
+    private ?int $isCoach = null;
+
+    #[ORM\Column(name: 'photoProfile', length: 255)]
+    private ?string $photoProfile = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $otp = null;
+
+    public function getIdUser(): ?int
+    {
+        return $this->idUser;
+    }
+  
+    public function setIdUser(int $idUser): static
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): static
+    {
+        $this->age = $age;
+
+        return $this;
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
     }
 
     public function getEmail(): ?string
@@ -60,6 +152,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+<<<<<<< HEAD
     
     
      /**
@@ -120,6 +213,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
+=======
+
+    public function getPassword(): ?string
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
     {
         return $this->password;
     }
@@ -131,6 +228,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -209,5 +307,89 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+=======
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): static
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getIsAdmin(): ?int
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(int $isAdmin): static
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    public function getIsCoach(): ?int
+    {
+        return $this->isCoach;
+    }
+
+    public function setIsCoach(int $isCoach): static
+    {
+        $this->isCoach = $isCoach;
+
+        return $this;
+    }
+
+    public function getPhotoProfile(): ?string
+    {
+        return $this->photoProfile;
+    }
+
+    public function setPhotoProfile(string $photoProfile): static
+    {
+        $this->photoProfile = $photoProfile;
+    
+        return $this;
+    }
+    
+
+    public function getOtp(): ?string
+    {
+        return $this->otp;
+    }
+
+    public function setOtp(string $otp): static
+    {
+        $this->otp = $otp;
+
+        return $this;
+    }
+
+    public function getRoles()
+    {
+        // Define user roles here, if needed
+        return ['ROLE_USER'];
+    }
+    
+    // Implement other methods required by UserInterface
+    public function getUsername()
+    {
+        return $this->email; // Assuming email is the username
+    }
+
+    public function getSalt()
+    {
+        // Leave this empty if not using plain passwords
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
     }
 }

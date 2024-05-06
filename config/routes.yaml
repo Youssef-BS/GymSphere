@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+=======
+
+chat:
+    path: /chat
+    controller: App\Controller\ChatController::index
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f

@@ -6,6 +6,7 @@ if (!ini_get('date.timezone')) {
 }
 
 if (is_file(dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit')) {
+<<<<<<< HEAD
     if (PHP_VERSION_ID >= 80000) {
         require dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit';
     } else {
@@ -13,6 +14,11 @@ if (is_file(dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit')) {
         require PHPUNIT_COMPOSER_INSTALL;
         PHPUnit\TextUI\Command::main();
     }
+=======
+    define('PHPUNIT_COMPOSER_INSTALL', dirname(__DIR__).'/vendor/autoload.php');
+    require PHPUNIT_COMPOSER_INSTALL;
+    PHPUnit\TextUI\Command::main();
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
 } else {
     if (!is_file(dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php')) {
         echo "Unable to find the `simple-phpunit.php` script in `vendor/symfony/phpunit-bridge/bin/`.\n";

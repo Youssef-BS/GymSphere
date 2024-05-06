@@ -4,4 +4,14 @@ framework:
         default_path: '%kernel.project_dir%/translations'
         fallbacks:
             - en
+<<<<<<< HEAD
         providers:
+=======
+#        providers:
+#            crowdin:
+#                dsn: '%env(CROWDIN_DSN)%'
+#            loco:
+#                dsn: '%env(LOCO_DSN)%'
+#            lokalise:
+#                dsn: '%env(LOKALISE_DSN)%'
+>>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
