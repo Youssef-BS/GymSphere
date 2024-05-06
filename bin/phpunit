@@ -9,6 +9,7 @@ if (is_file(dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit')) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
     if (PHP_VERSION_ID >= 80000) {
@@ -31,6 +32,11 @@ if (is_file(dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit')) {
     require PHPUNIT_COMPOSER_INSTALL;
     PHPUnit\TextUI\Command::main();
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+    define('PHPUNIT_COMPOSER_INSTALL', dirname(__DIR__).'/vendor/autoload.php');
+    require PHPUNIT_COMPOSER_INSTALL;
+    PHPUnit\TextUI\Command::main();
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 } else {
     if (!is_file(dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php')) {
         echo "Unable to find the `simple-phpunit.php` script in `vendor/symfony/phpunit-bridge/bin/`.\n";

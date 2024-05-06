@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 if (!is_dir(dirname(__DIR__).'/vendor')) {
     throw new LogicException('Dependencies are missing. Try running "composer install".');
@@ -14,6 +15,8 @@ if (!is_dir(dirname(__DIR__).'/vendor')) {
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 if (!is_file(dirname(__DIR__).'/vendor/autoload_runtime.php')) {
     throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
 }

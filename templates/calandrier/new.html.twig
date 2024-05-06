@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <style>
+      .container {
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        width : 500px;
+        margin : auto;
+        padding : 25px;
+    }
+
+
+        .form-label {
+            color: #333;
+        }
+
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top : 8px;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+        a {
+            text-decoration : none;
+            color : white;
+            text-align : center;
+        }
+        h1 {
+            text-align : center;
+            margin:50px;
+        }
+    </style>
+    <h1 class="text-center">Create new Calandrier</h1>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.dateActivite, 'Date Activite', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.dateActivite, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.typeactivite, 'Type Activite', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.typeactivite, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.heurefermuture, 'Heure Fermuture', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.heurefermuture, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.idgym, 'ID Gym', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.idgym, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+             <a href="{{ path('app_calandrier_index') }}" class="btn btn-secondary btn-block mt-3">Back to list</a>
+    </div>
+    {% for flashMessage in app.flashes('error') %}
+        <script>
+            alert('{{ flashMessage }}');
+        </script>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

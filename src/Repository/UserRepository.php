@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -30,12 +31,18 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 /**
  * @extends ServiceEntityRepository<User>
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+
+/**
+ * @extends ServiceEntityRepository<User>
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
  *
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -49,12 +56,16 @@ class UserRepository extends ServiceEntityRepository
 =======
 class UserRepository extends ServiceEntityRepository
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+class UserRepository extends ServiceEntityRepository
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -78,6 +89,8 @@ class UserRepository extends ServiceEntityRepository
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

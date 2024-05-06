@@ -1,0 +1,93 @@
+
+{% block title %}Add Gym{% endblock %}
+
+{% block stylesheets %}
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width : 500px ; 
+            margin : auto ;
+        }
+
+        .content-header h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+        }
+
+        .form-group label {
+            color: #333;
+        }
+
+        /* Adjust form width for larger screens */
+        @media (min-width: 768px) {
+            .col-md-6 {
+                width: 50%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% include 'admin/component/sideBar.html.twig' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Add Gym
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <form id="addGymForm" action="{{ path('add_gymform') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nomgym">Gym Name</label>
+                            <input type="text" class="form-control" id="nomgym" name="nomgym">
+                        </div>
+                        <div class="form-group">
+                            <label for="adresse">Address</label>
+                            <input type="text" class="form-control" id="adresse" name="adresse">
+                        </div>
+                        <div class="form-group">
+                            <label for="photogym">Photo</label>
+                            <input type="file" class="form-control" id="photogym" name="photogym">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Gym</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('addGymForm').addEventListener('submit', function(event) {
+            var nomgym = document.getElementById('nomgym').value;
+            var adresse = document.getElementById('adresse').value;
+
+            if (nomgym.trim() === '' || adresse.trim() === '') {
+                event.preventDefault();
+                alert('Please complete all fields.');
+            }
+        });
+    </script>
+{% endblock %}
+

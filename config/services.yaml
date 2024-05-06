@@ -7,6 +7,7 @@ parameters:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     photo_directory: '%kernel.project_dir%/public/uploads/photos'
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
@@ -25,10 +26,16 @@ services:
 
 services:
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+     upload_directory: '%kernel.project_dir%/public/uploads'
+
+services:
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -44,6 +51,10 @@ services:
 
 
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        
+
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -52,6 +63,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -71,3 +83,8 @@ services:
 
 
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681

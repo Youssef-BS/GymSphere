@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+body {
+    text-align : center ;
+}
+
+h1 {
+    margin : 50px ;
+}
+</style>
+
+    <h1>Edit Calandrier</h1>
+
+    {{ include('calandrier/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a  href="{{ path('app_calandrier_index') }}">back to list</a>
+
+    {{ include('calandrier/_delete_form.html.twig') }}
+{% endblock %}

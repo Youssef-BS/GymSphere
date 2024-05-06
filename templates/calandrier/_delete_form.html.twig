@@ -1,0 +1,21 @@
+<style>
+button {
+    margin-top : 8px;
+    color : white ;
+    background-color : red ;
+    border : none ;
+    padding :12px;
+    width : 100px;
+    border-radius : 12px ;
+    cursor : pointer ;
+    transition : .5s ;
+}
+button :hover {
+background-color :#F31559;
+}
+</style>
+
+<form method="post" action="{{ path('app_calandrier_delete', {'idcalandrier': calandrier.idcalandrier}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ calandrier.idcalandrier) }}">
+    <button class="btn">Delete</button>
+</form>

@@ -13,12 +13,15 @@
             margin-left: 250px; /* Adjust as needed */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             margin-top: 50px; /* Adjust as needed */
 =======
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
             margin-top: 50px; /* Adjust as needed */
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         }
 
         .container {
@@ -39,12 +42,16 @@
             transition: transform 0.3s ease;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
             
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+            
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         }
 
         .user-container:hover {
@@ -101,6 +108,7 @@
         button:hover {
             background-color: #0056b3;
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         .consulter-user {
@@ -196,10 +204,13 @@
             
         }
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     </style>
 </head>
 <body>
 {% include 'admin/component/sideBar.html.twig' %}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  <div class="consulter-user">
@@ -285,6 +296,10 @@
     <div class="container"> 
    
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+<div class="container-wrapper">
+    <div class="container"> 
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         {% for user in users %}
         <div class="user-container">
             <img src="https://wac-cdn.atlassian.com/fr/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1504" alt="" />
@@ -293,6 +308,7 @@
                 <p>{{ user.isAdmin ? 'Admin' : 'User' }}</p>
             </div>
             <div class="consulter">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
                 <button>edit</button>
@@ -304,14 +320,22 @@
 
 </form>
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+                <a href="{{ path('userDetail', {'id': user.idUser}) }}">consulter</a>
+                <button>edit</button>
+                <button>delete</button>
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 </body>
 </html>

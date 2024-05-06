@@ -4,12 +4,16 @@ namespace App\Controller;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,10 +23,13 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
 
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 
 class UserController extends AbstractController
 {
   
+<<<<<<< HEAD
 <<<<<<< HEAD
     #[Route('/getAll/{role?}/{search?}', name: 'app_listDB')]
     public function getAll(UserRepository $repo, ?string $role = null, ?string $search = null): Response
@@ -51,6 +58,8 @@ class UserController extends AbstractController
     #[Route('/userUpdate/{id}', name: 'userUpdate', methods: ['POST'])]
     public function updateUser($id, UserRepository $repo, Request $request): Response {
 =======
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     // #[Route('/user', name: 'app_user')]
     // public function index(): Response
     // {
@@ -67,6 +76,7 @@ class UserController extends AbstractController
         ]);
     }
 
+<<<<<<< HEAD
     #[Route('/userUpdate/{id}', name: 'userUpdate', methods: ['POST'])]
     public function updateUser($id, UserRepository $repo, Request $request): Response {
         // Find the user by id
@@ -222,11 +232,16 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
 
 
 
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     #[Route('/analystic', name: 'analystic')]
     public function getAnalystic() : Response{
     return $this->render('admin/component/analystics.html.twig');
     }
+<<<<<<< HEAD
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     #[Route('/users', name: 'users')]
     public function users(UserRepository $repo) : Response{
         $list = $repo->findAll();
@@ -234,11 +249,15 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
             'users' => $list
         ]);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     #[Route('/programs', name: 'programs')]
     public function programs() : Response{
     return $this->render('admin/component/programs.html.twig');
     }
+<<<<<<< HEAD
     #[Route('/gyms', name: 'gyms')]
     public function gyms() : Response{
     return $this->render('admin/component/gyms.html.twig');
@@ -248,6 +267,13 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
 =======
     #[Route('/products', name: 'produts')]
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+    // #[Route('/gyms', name: 'gyms')]
+    // public function gyms() : Response{
+    // return $this->render('admin/component/gyms.html.twig');
+    // }
+    #[Route('/products', name: 'produts')]
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     public function products() : Response{
     return $this->render('admin/component/products.html.twig');
     }
@@ -255,6 +281,7 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
     public function reclamation() : Response{
     return $this->render('admin/component/reclamation.html.twig');
     }
+<<<<<<< HEAD
 
     #[Route('/userDetail/{id}', name: 'userDetail' , methods: ['GET'])]
     public function userDetails($id, UserRepository $repo): Response {
@@ -267,6 +294,12 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
 
 
 
+=======
+    #[Route('/userDetail', name: 'userDetail')]
+    public function userDetails() : Response{
+    return $this->render('admin/component/userDetails.html.twig');
+    }
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     #[Route('/productDetails', name: 'productDetails')]
     public function productDetails() : Response{
     return $this->render('admin/component/produitDetails.html.twig');
@@ -284,6 +317,7 @@ public function addUser(Request $request, EntityManagerInterface $entityManager)
     return $this->render('admin/component/programsDetails.html.twig');
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -303,4 +337,6 @@ class UserController extends AbstractController
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 }

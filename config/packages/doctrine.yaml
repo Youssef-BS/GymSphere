@@ -7,6 +7,7 @@ doctrine:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         #server_version: '16'
         use_savepoints: true
 =======
@@ -19,6 +20,9 @@ doctrine:
 =======
         #server_version: '15'
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        #server_version: '15'
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
@@ -58,6 +62,7 @@ when@prod:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 >>>>>>> 81688ff31e36db63b702e05ba73f5478ffdd725f
@@ -65,3 +70,5 @@ when@prod:
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681

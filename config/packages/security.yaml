@@ -8,6 +8,7 @@ security:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
@@ -22,12 +23,16 @@ security:
 =======
         users_in_memory: { memory: null }
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        users_in_memory: { memory: null }
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -60,6 +65,10 @@ security:
             provider: users_in_memory
 
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+            provider: users_in_memory
+
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 

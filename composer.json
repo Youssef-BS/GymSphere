@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         "doctrine/annotations": "^2.0",
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
@@ -68,6 +69,17 @@
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "5.4.*",
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        "doctrine/annotations": "^2.0",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.19",
+        "firebase/php-jwt": "^6.10",
+        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpstan/phpdoc-parser": "^1.24",
+        "sensio/framework-extra-bundle": "^6.2",
+        "symfony/asset": "5.4.*",
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         "symfony/console": "5.4.*",
         "symfony/doctrine-messenger": "5.4.*",
         "symfony/dotenv": "5.4.*",
@@ -76,6 +88,7 @@
         "symfony/form": "5.4.*",
         "symfony/framework-bundle": "5.4.*",
         "symfony/http-client": "5.4.*",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -94,6 +107,11 @@
         "symfony/intl": "5.4.*",
         "symfony/mailer": "5.4.*",
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        "symfony/http-foundation": "5.4.*",
+        "symfony/intl": "5.4.*",
+        "symfony/mailer": "5.4.*",
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         "symfony/mime": "5.4.*",
         "symfony/monolog-bundle": "^3.0",
         "symfony/notifier": "5.4.*",
@@ -103,6 +121,7 @@
         "symfony/runtime": "5.4.*",
         "symfony/security-bundle": "5.4.*",
         "symfony/serializer": "5.4.*",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -120,11 +139,14 @@
 =======
 =======
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         "symfony/string": "5.4.*",
         "symfony/translation": "5.4.*",
         "symfony/twig-bundle": "5.4.*",
         "symfony/validator": "5.4.*",
         "symfony/web-link": "5.4.*",
+<<<<<<< HEAD
 <<<<<<< HEAD
         "symfony/webpack-encore-bundle": "^2.1",
         "symfony/yaml": "5.4.*",
@@ -149,12 +171,18 @@
         "twig/twig": "^2.12|^3.0",
         "twilio/sdk": "^8.0"
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+        "symfony/yaml": "5.4.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "php-http/discovery": true,
             "symfony/flex": true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -170,6 +198,9 @@
 =======
             "symfony/runtime": true
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+            "symfony/runtime": true
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -183,10 +214,13 @@
         }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
@@ -227,6 +261,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "symfony/phpunit-bridge": "^7.0",
 =======
         "symfony/phpunit-bridge": "^6.3",
@@ -238,10 +273,13 @@
         "symfony/web-profiler-bundle": "5.4.*"
     }
 =======
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
         "symfony/phpunit-bridge": "^6.3",
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"
     }
+<<<<<<< HEAD
 
     
     
@@ -249,4 +287,6 @@
     
     
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 }

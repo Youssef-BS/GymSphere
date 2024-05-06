@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 version: '3'
 
 services:
@@ -15,6 +16,8 @@ services:
 ###< symfony/mailer ###
 
 =======
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 version: '3'
 
 services:
@@ -29,4 +32,7 @@ services:
     image: schickling/mailcatcher
     ports: ["1025", "1080"]
 ###< symfony/mailer ###
+<<<<<<< HEAD
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681

@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
@@ -75,3 +76,20 @@ export_reclamations_excel:
     path: /reclamation/export/excel
     controller: App\Controller\ReclamationController::exportReclamationsExcel
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+
+calandrier:
+    path: /calandrier
+    controller: App\Controller\CalandrierController::index
+
+
+# filter_gyms_by_address:
+#     path: '/filter_gyms_by_address'
+#     controller: App\Controller\GymController::filterGymsByAddress'
+#     methods: ['GET']
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681

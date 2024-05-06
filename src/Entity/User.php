@@ -4,6 +4,7 @@ namespace App\Entity;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -423,6 +424,8 @@ class User
 }
 >>>>>>> 649ef9c620e35f87ee5e3746f7e798e948fc7cc4
 =======
+=======
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -458,6 +461,16 @@ class User
     private $prenom;
 
     /**
+<<<<<<< HEAD
+=======
+     * @var string|null
+     *
+     * @ORM\Column(name="photoProfile", type="string", length=255, nullable=true)
+     */
+    private $photoprofile;
+
+    /**
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
      * @var int
      *
      * @ORM\Column(name="age", type="integer", nullable=false)
@@ -479,9 +492,15 @@ class User
     private $password;
 
     /**
+<<<<<<< HEAD
      * @var string
      *
      * @ORM\Column(name="phoneNumber", type="string", length=255, nullable=false)
+=======
+     * @var int
+     *
+     * @ORM\Column(name="phoneNumber", type="integer", nullable=false)
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
      */
     private $phonenumber;
 
@@ -502,6 +521,7 @@ class User
     /**
      * @var string|null
      *
+<<<<<<< HEAD
      * @ORM\Column(name="photoProfile", type="string", length=255, nullable=true, options={"default"="https://i.pinimg.com/236x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg"})
      */
     private $photoprofile = 'https://i.pinimg.com/236x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg';
@@ -516,3 +536,134 @@ class User
 
 }
 >>>>>>> 0f9be098c09a370d9b7246eec13ee77203b60875
+=======
+     * @ORM\Column(name="otp", type="string", length=255, nullable=true)
+     */
+    private $otp;
+
+    public function getIduser(): ?int
+    {
+        return $this->iduser;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getPhotoprofile(): ?string
+    {
+        return $this->photoprofile;
+    }
+
+    public function setPhotoprofile(?string $photoprofile): self
+    {
+        $this->photoprofile = $photoprofile;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getPhonenumber(): ?int
+    {
+        return $this->phonenumber;
+    }
+
+    public function setPhonenumber(int $phonenumber): self
+    {
+        $this->phonenumber = $phonenumber;
+
+        return $this;
+    }
+
+    public function getIsadmin(): ?bool
+    {
+        return $this->isadmin;
+    }
+
+    public function setIsadmin(?bool $isadmin): self
+    {
+        $this->isadmin = $isadmin;
+
+        return $this;
+    }
+
+    public function getIscoach(): ?bool
+    {
+        return $this->iscoach;
+    }
+
+    public function setIscoach(?bool $iscoach): self
+    {
+        $this->iscoach = $iscoach;
+
+        return $this;
+    }
+
+    public function getOtp(): ?string
+    {
+        return $this->otp;
+    }
+
+    public function setOtp(?string $otp): self
+    {
+        $this->otp = $otp;
+
+        return $this;
+    }
+}
+>>>>>>> eb00ab66c5c8cb0c2ad54f78e46097d1f33bb681
