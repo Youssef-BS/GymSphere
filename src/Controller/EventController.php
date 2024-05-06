@@ -12,6 +12,7 @@ use App\Repository\ParticipationRepository;
 use App\Repository\ProgramRepository;
 use App\Repository\UserRepository;
 use App\Services\QrcodeService;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Endroid\QrCode\QrCode;
@@ -59,8 +60,9 @@ class EventController extends AbstractController
     }
 
     #[Route('/listEvent', name: 'list_event')]
-    public function listEvent(EventRepository $eventRepository,Request $request): Response
+    public function listEvent(EventRepository $eventRepository,Request $request,ManagerRegistry $manager): Response
     {
+        $em = $manager->getManager();
         $filter = $request->query->get('filter');
         $events = [];
         if ($filter === 'available') {
@@ -69,24 +71,23 @@ class EventController extends AbstractController
             $events = $eventRepository->findAll();
         }
 
-        // Update the status of each event based on its start date
+       
         foreach ($events as $event) {
             if ($event->getDateDebut() < new \DateTime()) {
-                // Update the status of the event
-                $event->setStatus('Terminé'); // Example status update, adjust as needed
-    
-                // Optionally, persist the changes to the database
-                // $entityManager->persist($event);
+               
+                $event->setStatus('Terminé'); 
+    $em->flush();
+               
             }
             else{
                 $event->setStatus('Disponible');
+                $em->flush();
             }
         }
     
-        // Optionally, flush the changes to the database
-        // $entityManager->flush();
+        
     
-        // Fetch data from the database - number of participants in each event
+        
         $eventschart = $eventRepository->findTop10EventsByParticipants();
     
         // Prepare data for the chart
@@ -148,11 +149,12 @@ class EventController extends AbstractController
     #[Route('/clientEvent', name: 'client_event')]
     public function clientPrograms( EntityManagerInterface $entityManager,UserRepository $userRepository): Response
     {
-        $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+        
     
         // Check if user is logged in and get their subscriptions
         $userParticipations = [];
-        if ($user) {
+        if ($this->getUser()) {
+            $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
             $userParticipations = $user->getParticipations()->toArray();
         }
     
@@ -214,10 +216,10 @@ class EventController extends AbstractController
     #[Route('/statistics', name: 'statistics')]
     public function stat(EventRepository $eventRepository): Response
     {
-        // Fetch data from the database - number of participants in each event
+       
         $eventschart = $eventRepository->findTop10EventsByParticipants();
 
-        // Prepare data for the chart
+        
         $labels = [];
         $participantsCount = [];
 

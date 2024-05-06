@@ -57,7 +57,7 @@ public function findTop10EventsByParticipants()
 public function findAvailableEvents(): array
     {
          return $this->createQueryBuilder('e')
-            ->andWhere('e.startDate > :now')
+            ->andWhere('e.date_debut > :now')
             ->setParameter('now', new \DateTime())
             ->getQuery()
             ->getResult();

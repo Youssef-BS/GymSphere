@@ -139,7 +139,7 @@ class ProgramController extends AbstractController
     public function clientPrograms(EntityManagerInterface $entityManager,ProgramRepository $programrepository,UserRepository $userRepository): Response
     {
         $currentDate = new DateTime();
-        $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+        
         
     
         $query = $entityManager->createQuery(
@@ -150,7 +150,8 @@ class ProgramController extends AbstractController
         $programs = $query->getResult();
 
         $userSubscriptions = [];
-        if ($user) {
+        if ($this->getUser()) {
+            $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
             $userSubscriptions = $user->getInscriptions()->toArray();
         }
     
@@ -173,6 +174,11 @@ class ProgramController extends AbstractController
 public function payment($id, ProgramManager $programManager, ProgramRepository $programrepository,UserRepository $userRepository): Response
 {
     
+       
+    if (!$this->getUser()) {
+        return $this->redirectToRoute('app_login');
+    }
+    else{
         $program = $programrepository->find($id);
         $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
     $isSubscribed = $programManager->isUserSubscribed($program, $user);
@@ -182,15 +188,12 @@ public function payment($id, ProgramManager $programManager, ProgramRepository $
         $this->addFlash('warning', 'You are already subscribed to this program.');
         return $this->redirectToRoute('client_program');
     }
-    if (!$this->getUser()) {
-        return $this->redirectToRoute('login');
-    }
-
     return $this->render('program/paymentProgram.html.twig', [
         'user' => $this->getUser(),
         'intentSecret' => $programManager->intentSecret($program),
         'program' => $program
     ]);
+}
 }
 
 
